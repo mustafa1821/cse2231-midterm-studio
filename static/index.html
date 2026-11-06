@@ -1,0 +1,101 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="color-scheme" content="dark" />
+  <title>CSE 2231 Midterm Studio</title>
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+  <link rel="stylesheet" href="/style.css" />
+</head>
+<body>
+  <header class="nav">
+    <div class="nav-left">
+      <button class="brand" id="brandHome" title="Overview">
+        <span class="logo">{ }</span><span class="brand-name">Midterm Studio</span>
+      </button>
+      <nav class="nav-links" aria-label="Study modes">
+        <button data-mode="home" class="mode">Overview</button>
+        <button data-mode="bank" class="mode active">Question Bank <b id="bankcount"></b></button>
+        <button data-mode="mc" class="mode">Multiple Choice <b id="mccount"></b></button>
+        <button data-mode="short" class="mode">Short Response <b id="shortcount"></b></button>
+        <button data-mode="code" class="mode">Java Coding <b id="codecount"></b></button>
+      </nav>
+    </div>
+
+    <!-- Workspace controls: only shown while practicing a question -->
+    <div class="nav-center" id="workspaceNav">
+      <button class="icon-btn list-toggle" id="openList" title="Problem list">
+        <svg viewBox="0 0 16 16" aria-hidden="true"><path d="M2 3.5h12M2 8h12M2 12.5h12" /></svg>
+        <span id="listCaption">Problem List</span>
+      </button>
+      <button class="icon-btn" id="prevQ" title="Previous question" aria-label="Previous question">
+        <svg viewBox="0 0 16 16" aria-hidden="true"><path d="M10 3 5 8l5 5" /></svg>
+      </button>
+      <button class="icon-btn" id="nextNav" title="Next question" aria-label="Next question">
+        <svg viewBox="0 0 16 16" aria-hidden="true"><path d="m6 3 5 5-5 5" /></svg>
+      </button>
+      <button class="icon-btn" id="shuffle" title="Choose a random question" aria-label="Random question">
+        <svg viewBox="0 0 16 16" aria-hidden="true"><path d="M2 4.5h2.5c3 0 4 7 7 7H14M2 11.5h2.5c1.3 0 2.2-1.3 3-2.8M9.6 6.3c.7-1 1.4-1.8 2.4-1.8H14M12 2.5l2 2-2 2M12 9.5l2 2-2 2" /></svg>
+      </button>
+    </div>
+
+    <div class="nav-right">
+      <span class="progress-chip" title="Bank completion"><span class="ring" id="progressRing"></span><b id="progressText">0%</b></span>
+      <span id="runtimeStatus" class="runtime">Checking Java…</span>
+    </div>
+  </header>
+
+  <!-- Problem list drawer (practice modes) -->
+  <div class="drawer-backdrop" id="drawerBackdrop"></div>
+  <aside class="drawer" id="drawer" aria-label="Question list">
+    <div class="drawer-head">
+      <strong id="drawerTitle">Question Bank</strong>
+      <span id="listCount" class="muted"></span>
+      <button class="icon-btn" id="closeList" aria-label="Close list">
+        <svg viewBox="0 0 16 16" aria-hidden="true"><path d="m4 4 8 8M12 4l-8 8" /></svg>
+      </button>
+    </div>
+    <div class="drawer-filters" id="drawerFilters"></div>
+    <div class="question-list" id="questionList" role="list"></div>
+    <div class="drawer-foot">Your answers and code are saved in this browser.</div>
+  </aside>
+
+  <main class="main" id="main" tabindex="-1"><p class="muted page">Loading question bank…</p></main>
+
+  <!-- Overview page -->
+  <template id="homeTemplate">
+    <div class="page">
+      <section class="hero">
+        <div class="hero-text">
+          <div class="kicker">OSU / SOFTWARE II · CSE 2231 · Autumn 2026 · MIDTERM 02 • FULL COURSE THROUGH NOV 6</div>
+          <h1>Train the concepts. Write the code.</h1>
+          <p>Homework 1–28, projects 1–7, the practice midterm and your submitted project sources — all mapped to exam-style questions.</p>
+          <div class="tags"><span>Java 17+</span><span>Local JDK judge</span><span>Hidden tests</span><span>Progress tracking</span></div>
+          <div class="hero-actions">
+            <button class="btn btn-primary" data-goto="mc">Start multiple choice</button>
+            <button class="btn" data-goto="code">Open coding lab</button>
+            <button class="btn" data-goto="bank">Browse the question bank</button>
+          </div>
+        </div>
+      </section>
+      <section class="stat-row">
+        <div class="card stat"><span>Multiple-choice drills</span><b data-stat="mc">—</b></div>
+        <div class="card stat"><span>Short response drills</span><b data-stat="short">—</b></div>
+        <div class="card stat"><span>Java coding challenges</span><b data-stat="code">—</b></div>
+        <div class="card stat"><span>Completed</span><b data-stat="done">0</b></div>
+      </section>
+      <section class="card note">
+        <h3>Exam scope</h3>
+        <p>The November 6 Midterm 2 is after Homework 28 and Project 7. This bank includes earlier material because assignments and projects are reused in exams. The coding judge uses small, self-contained Java models of OSU structures; it does not replace the official components.jar API.</p>
+      </section>
+      <footer class="page-foot">
+        <span>Independent study tool · not an official OSU testing platform</span>
+        <span>Run server locally · Ctrl+Enter to submit code · A–D to pick an answer · N for next</span>
+      </footer>
+    </div>
+  </template>
+
+  <script src="/app.js"></script>
+</body>
+</html>

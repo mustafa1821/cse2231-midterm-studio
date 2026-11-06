@@ -1,0 +1,1723 @@
+[
+  {
+    "id": "C001",
+    "title": "Smooth Adjacent Pairs",
+    "topic": "Sequences",
+    "description": "Return a new List of averages of adjacent integers using Java truncation toward zero. Input is nonempty; do not modify it. This mirrors HW01–03 smooth.",
+    "signature": "List<Integer> smooth(List<Integer> input)",
+    "difficulty": "Easy",
+    "starter": "import java.util.*;\n\npublic class Solution {\n    public static List<Integer> smooth(List<Integer> input) {\n        // TODO: Implement your solution.\n        throw new UnsupportedOperationException(\"Not implemented\");\n    }\n}\n",
+    "solution": "import java.util.*;\n\npublic class Solution {\n    public static List<Integer> smooth(List<Integer> input) {\n        List<Integer> out=new ArrayList<>();\n        for(int i=0;i+1<input.size();i++) out.add((int)(((long)input.get(i)+(long)input.get(i+1))/2));\n        return out;\n    }\n}\n",
+    "tests": [
+      {
+        "name": "three numbers",
+        "code": "Solution.smooth(Arrays.asList(2,4,6)).equals(Arrays.asList(3,5))"
+      },
+      {
+        "name": "singleton",
+        "code": "Solution.smooth(Arrays.asList(7)).isEmpty()"
+      },
+      {
+        "name": "negative truncation",
+        "code": "Solution.smooth(Arrays.asList(-5,2,7,8)).equals(Arrays.asList(-1,4,7))"
+      },
+      {
+        "name": "extreme sum",
+        "code": "Solution.smooth(Arrays.asList(Integer.MAX_VALUE,Integer.MAX_VALUE)).equals(Arrays.asList(Integer.MAX_VALUE))"
+      }
+    ],
+    "hints": [
+      "You need one output entry per adjacent pair.",
+      "Use a long sum before division to avoid overflow."
+    ],
+    "source": "HW01–03",
+    "explanation": "Scan consecutive pairs once, compute each average using a long intermediate to avoid overflow, and append to a new list. A list of length one produces no pair."
+  },
+  {
+    "id": "C002",
+    "title": "Safe Java Integer Average",
+    "topic": "Arithmetic",
+    "description": "Implement the exact mathematical (a+b)/2 truncated toward zero, without int overflow. The returned value always fits int. HW04 explicitly tests MIN/MAX boundaries. You may use long here; the homework requires int-only, covered separately in review.",
+    "signature": "int average(int a,int b)",
+    "difficulty": "Easy",
+    "starter": "import java.util.*;\n\npublic class Solution {\n    public static int average(int a,int b) {\n        // TODO: Implement your solution.\n        throw new UnsupportedOperationException(\"Not implemented\");\n    }\n}\n",
+    "solution": "import java.util.*;\n\npublic class Solution {\n    public static int average(int a,int b) {\n        return (int)(((long)a+(long)b)/2L);\n    }\n}\n",
+    "tests": [
+      {
+        "name": "normal",
+        "code": "Solution.average(5,8)==6"
+      },
+      {
+        "name": "negative",
+        "code": "Solution.average(-5,-8)==-6"
+      },
+      {
+        "name": "mixed",
+        "code": "Solution.average(Integer.MIN_VALUE,Integer.MAX_VALUE)==0"
+      },
+      {
+        "name": "max",
+        "code": "Solution.average(Integer.MAX_VALUE,Integer.MAX_VALUE)==Integer.MAX_VALUE"
+      },
+      {
+        "name": "min",
+        "code": "Solution.average(Integer.MIN_VALUE,Integer.MIN_VALUE)==Integer.MIN_VALUE"
+      },
+      {
+        "name": "cross-zero",
+        "code": "Solution.average(-3,2)==0"
+      }
+    ],
+    "hints": [
+      "Cast before adding, not afterward.",
+      "Java integer division truncates toward zero."
+    ],
+    "source": "HW04",
+    "explanation": "Promote both operands before adding: ((long)a + b) / 2. Converting after adding would preserve an already-overflowed int."
+  },
+  {
+    "id": "C003",
+    "title": "Sequence Palindrome",
+    "topic": "Sequences",
+    "description": "Return true if an integer sequence reads identically forward and backward. Do not mutate the input. Based on Lab01.",
+    "signature": "boolean palindrome(List<Integer> a)",
+    "difficulty": "Easy",
+    "starter": "import java.util.*;\n\npublic class Solution {\n    public static boolean palindrome(List<Integer> a) {\n        // TODO: Implement your solution.\n        throw new UnsupportedOperationException(\"Not implemented\");\n    }\n}\n",
+    "solution": "import java.util.*;\n\npublic class Solution {\n    public static boolean palindrome(List<Integer> a) {\n        for(int i=0,j=a.size()-1;i<j;i++,j--)if(!a.get(i).equals(a.get(j)))return false;\n        return true;\n    }\n}\n",
+    "tests": [
+      {
+        "name": "empty",
+        "code": "Solution.palindrome(Collections.emptyList())"
+      },
+      {
+        "name": "singleton",
+        "code": "Solution.palindrome(Arrays.asList(4))"
+      },
+      {
+        "name": "odd",
+        "code": "Solution.palindrome(Arrays.asList(1,2,1))"
+      },
+      {
+        "name": "even",
+        "code": "Solution.palindrome(Arrays.asList(3,2,2,3))"
+      },
+      {
+        "name": "not palindrome",
+        "code": "!Solution.palindrome(Arrays.asList(1,2,3))"
+      }
+    ],
+    "hints": [
+      "Compare symmetric index pairs."
+    ],
+    "source": "Lab01",
+    "explanation": "Compare mirrored positions moving inwards. Stop on the first mismatch; the empty and singleton sequences are palindromes."
+  },
+  {
+    "id": "C004",
+    "title": "Queue Front with Restoration",
+    "topic": "Stacks & Queues",
+    "description": "Return the first element of an ArrayDeque without modifying its abstract contents. Queue is nonempty; use removal/append/rotation instead of peek() to simulate layering.",
+    "signature": "int frontRestore(ArrayDeque<Integer> q)",
+    "difficulty": "Easy",
+    "starter": "import java.util.*;\n\npublic class Solution {\n    public static int frontRestore(ArrayDeque<Integer> q) {\n        // TODO: Implement your solution.\n        throw new UnsupportedOperationException(\"Not implemented\");\n    }\n}\n",
+    "solution": "import java.util.*;\n\npublic class Solution {\n    public static int frontRestore(ArrayDeque<Integer> q) {\n        int size=q.size();int x=q.removeFirst();q.addLast(x);\n        for(int i=0;i<size-1;i++)q.addLast(q.removeFirst());\n        return x;\n    }\n}\n",
+    "tests": [
+      {
+        "name": "singleton",
+        "code": "@ArrayDeque<Integer> q=new ArrayDeque<>(Arrays.asList(7)); check(Solution.frontRestore(q)==7&&new ArrayList<>(q).equals(Arrays.asList(7)));"
+      },
+      {
+        "name": "multiple",
+        "code": "@ArrayDeque<Integer> q=new ArrayDeque<>(Arrays.asList(3,6,9)); check(Solution.frontRestore(q)==3&&new ArrayList<>(q).equals(Arrays.asList(3,6,9)));"
+      }
+    ],
+    "hints": [
+      "Save the first value, then rotate the Queue until the original order returns."
+    ],
+    "source": "HW06",
+    "explanation": "Temporarily remove the first queue entry and rotate the remaining entries before restoring the original front at the end. The outgoing queue must be unchanged."
+  },
+  {
+    "id": "C005",
+    "title": "Shift Boundary Between Two Stacks",
+    "topic": "Stacks & Queues",
+    "description": "Model HW07 Sequence on Stack: left is stored with its top at the end (ArrayDeque.peekLast()); right has its front at the top (ArrayDeque.peekLast()). Shift top elements to make left size k while preserving rev(left)*right in the course model.",
+    "signature": "void shiftBoundary(ArrayDeque<Integer> left, ArrayDeque<Integer> right, int k)",
+    "difficulty": "Medium",
+    "starter": "import java.util.*;\n\npublic class Solution {\n    public static void shiftBoundary(ArrayDeque<Integer> left, ArrayDeque<Integer> right, int k) {\n        // TODO: Implement your solution.\n        \n    }\n}\n",
+    "solution": "import java.util.*;\n\npublic class Solution {\n    public static void shiftBoundary(ArrayDeque<Integer> left, ArrayDeque<Integer> right, int k) {\n        while(left.size()>k) right.addLast(left.removeLast());\n        while(left.size()<k) left.addLast(right.removeLast());\n    }\n}\n",
+    "tests": [
+      {
+        "name": "move left",
+        "code": "@ArrayDeque<Integer> a=new ArrayDeque<>(Arrays.asList(1,2));ArrayDeque<Integer>b=new ArrayDeque<>(Arrays.asList(5,4,3));Solution.shiftBoundary(a,b,1);check(new ArrayList<>(a).equals(Arrays.asList(1))&&new ArrayList<>(b).equals(Arrays.asList(5,4,3,2)));"
+      },
+      {
+        "name": "move right",
+        "code": "@ArrayDeque<Integer> a=new ArrayDeque<>(Arrays.asList(1));ArrayDeque<Integer>b=new ArrayDeque<>(Arrays.asList(4,3,2));Solution.shiftBoundary(a,b,3);check(new ArrayList<>(a).equals(Arrays.asList(1,2,3))&&new ArrayList<>(b).equals(Arrays.asList(4)));"
+      }
+    ],
+    "hints": [
+      "The operation is always a pop from one stack and push to the other."
+    ],
+    "source": "HW07",
+    "explanation": "Move one element between the two stacks to change the boundary while preserving their combined logical sequence. Handle empty-side preconditions."
+  },
+  {
+    "id": "C006",
+    "title": "Queue Set: Add Unique",
+    "topic": "Set on Queue",
+    "description": "Simulate a Set layered over a Queue. Add x to queue only if not already present. Preserve relative order of existing entries.",
+    "signature": "void addUnique(ArrayDeque<Integer> q,int x)",
+    "difficulty": "Easy",
+    "starter": "import java.util.*;\n\npublic class Solution {\n    public static void addUnique(ArrayDeque<Integer> q,int x) {\n        // TODO: Implement your solution.\n        \n    }\n}\n",
+    "solution": "import java.util.*;\n\npublic class Solution {\n    public static void addUnique(ArrayDeque<Integer> q,int x) {\n        if(!q.contains(x))q.addLast(x);\n    }\n}\n",
+    "tests": [
+      {
+        "name": "add new",
+        "code": "@ArrayDeque<Integer>q=new ArrayDeque<>(Arrays.asList(2,3));Solution.addUnique(q,4);check(new ArrayList<>(q).equals(Arrays.asList(2,3,4)));"
+      },
+      {
+        "name": "existing",
+        "code": "@ArrayDeque<Integer>q=new ArrayDeque<>(Arrays.asList(2,3));Solution.addUnique(q,2);check(new ArrayList<>(q).equals(Arrays.asList(2,3)));"
+      },
+      {
+        "name": "empty",
+        "code": "@ArrayDeque<Integer>q=new ArrayDeque<>();Solution.addUnique(q,9);check(new ArrayList<>(q).equals(Arrays.asList(9)));"
+      }
+    ],
+    "hints": [
+      "Sets cannot contain duplicate values."
+    ],
+    "source": "HW08",
+    "explanation": "Test membership before enqueuing into the underlying queue. Rotate to preserve existing order; adding duplicates must not increase the set size."
+  },
+  {
+    "id": "C007",
+    "title": "Map Move-to-Front",
+    "topic": "Maps",
+    "description": "Given a LinkedList of keys that are unique, move a matching key to the front. If absent, preserve the original list. This adapts HW09 moveToFront for Map.Pair keys.",
+    "signature": "void moveToFront(LinkedList<String> keys,String key)",
+    "difficulty": "Easy",
+    "starter": "import java.util.*;\n\npublic class Solution {\n    public static void moveToFront(LinkedList<String> keys,String key) {\n        // TODO: Implement your solution.\n        \n    }\n}\n",
+    "solution": "import java.util.*;\n\npublic class Solution {\n    public static void moveToFront(LinkedList<String> keys,String key) {\n        if(keys.remove(key))keys.addFirst(key);\n    }\n}\n",
+    "tests": [
+      {
+        "name": "middle",
+        "code": "@LinkedList<String>x=new LinkedList<>(Arrays.asList(\"a\",\"b\",\"c\"));Solution.moveToFront(x,\"b\");check(x.equals(Arrays.asList(\"b\",\"a\",\"c\")));"
+      },
+      {
+        "name": "absent",
+        "code": "@LinkedList<String>x=new LinkedList<>(Arrays.asList(\"a\",\"b\"));Solution.moveToFront(x,\"z\");check(x.equals(Arrays.asList(\"a\",\"b\")));"
+      },
+      {
+        "name": "first",
+        "code": "@LinkedList<String>x=new LinkedList<>(Arrays.asList(\"a\",\"b\"));Solution.moveToFront(x,\"a\");check(x.equals(Arrays.asList(\"a\",\"b\")));"
+      }
+    ],
+    "hints": [
+      "Find matching key and preserve all other entries."
+    ],
+    "source": "HW09",
+    "explanation": "Search for the requested key and move the matching entry to the front while retaining every other entry. Be careful not to lose the pair during rebuilding."
+  },
+  {
+    "id": "C008",
+    "title": "Mathematical Modulo",
+    "topic": "Hashing",
+    "description": "Return mathematical a mod b in [0,b), given b>0. Java remainder may be negative; this is directly based on HW10 and your P03 code.",
+    "signature": "int mod(int a,int b)",
+    "difficulty": "Easy",
+    "starter": "import java.util.*;\n\npublic class Solution {\n    public static int mod(int a,int b) {\n        // TODO: Implement your solution.\n        throw new UnsupportedOperationException(\"Not implemented\");\n    }\n}\n",
+    "solution": "import java.util.*;\n\npublic class Solution {\n    public static int mod(int a,int b) {\n        int r=a%b;\n        return r<0?r+b:r;\n    }\n}\n",
+    "tests": [
+      {
+        "name": "positive",
+        "code": "Solution.mod(7,5)==2"
+      },
+      {
+        "name": "negative",
+        "code": "Solution.mod(-7,5)==3"
+      },
+      {
+        "name": "zero",
+        "code": "Solution.mod(0,10)==0"
+      },
+      {
+        "name": "min",
+        "code": "Solution.mod(Integer.MIN_VALUE,7)==Math.floorMod(Integer.MIN_VALUE,7)"
+      },
+      {
+        "name": "one",
+        "code": "Solution.mod(-100,1)==0"
+      }
+    ],
+    "hints": [
+      "Compute remainder and adjust when negative."
+    ],
+    "source": "HW10 / P03",
+    "explanation": "The Java remainder operator can yield a negative result; normalize the remainder into [0,n). Assumes positive modulus n."
+  },
+  {
+    "id": "C009",
+    "title": "Hash Bucket Index",
+    "topic": "Hashing",
+    "description": "For a key hashCode and capacity>0, return a valid bucket index. Do not use Math.abs(hash) because MIN_VALUE is problematic.",
+    "signature": "int bucketIndex(int hash,int capacity)",
+    "difficulty": "Easy",
+    "starter": "import java.util.*;\n\npublic class Solution {\n    public static int bucketIndex(int hash,int capacity) {\n        // TODO: Implement your solution.\n        throw new UnsupportedOperationException(\"Not implemented\");\n    }\n}\n",
+    "solution": "import java.util.*;\n\npublic class Solution {\n    public static int bucketIndex(int hash,int capacity) {\n        return Math.floorMod(hash,capacity);\n    }\n}\n",
+    "tests": [
+      {
+        "name": "positive",
+        "code": "Solution.bucketIndex(34,10)==4"
+      },
+      {
+        "name": "negative",
+        "code": "Solution.bucketIndex(-34,10)==6"
+      },
+      {
+        "name": "min",
+        "code": "Solution.bucketIndex(Integer.MIN_VALUE,101)==Math.floorMod(Integer.MIN_VALUE,101)"
+      },
+      {
+        "name": "capacity 1",
+        "code": "Solution.bucketIndex(-5,1)==0"
+      }
+    ],
+    "hints": [
+      "A bucket index must be nonnegative and less than capacity."
+    ],
+    "source": "HW10–11 / P03",
+    "explanation": "Obtain the key’s hashCode and apply nonnegative modulo to the bucket count. Do not use Math.abs, which fails on Integer.MIN_VALUE."
+  },
+  {
+    "id": "C010",
+    "title": "Hash-Table Bucket Histogram",
+    "topic": "Hashing",
+    "description": "For each integer x, use mathematical x mod capacity as its bucket. Return an int[] of bucket counts. Mirrors HW10 hash-distribution exercise.",
+    "signature": "int[] histogram(int[] keys,int capacity)",
+    "difficulty": "Easy",
+    "starter": "import java.util.*;\n\npublic class Solution {\n    public static int[] histogram(int[] keys,int capacity) {\n        // TODO: Implement your solution.\n        throw new UnsupportedOperationException(\"Not implemented\");\n    }\n}\n",
+    "solution": "import java.util.*;\n\npublic class Solution {\n    public static int[] histogram(int[] keys,int capacity) {\n        int[] out=new int[capacity];\n        for(int x:keys)out[Math.floorMod(x,capacity)]++;\n        return out;\n    }\n}\n",
+    "tests": [
+      {
+        "name": "mixed",
+        "code": "Arrays.equals(Solution.histogram(new int[]{1,-1,11,-11},10),new int[]{0,2,0,0,0,0,0,0,0,2})"
+      },
+      {
+        "name": "empty",
+        "code": "Arrays.equals(Solution.histogram(new int[]{},3),new int[]{0,0,0})"
+      },
+      {
+        "name": "one bucket",
+        "code": "Arrays.equals(Solution.histogram(new int[]{2,-3,4},1),new int[]{3})"
+      }
+    ],
+    "hints": [
+      "Create capacity counters initialized to zero.",
+      "Every key maps through mathematical modulo."
+    ],
+    "source": "HW10",
+    "explanation": "Initialize one counter per bucket; calculate the index for each key and increment that counter. The sum must equal the number of entries."
+  },
+  {
+    "id": "C011",
+    "title": "Word Frequency Map",
+    "topic": "WordCounter",
+    "description": "Count case-insensitive words separated by any nonletter characters. Return a Map from lowercase word to count. Inspired by the uploaded WordCounter project.",
+    "signature": "Map<String,Integer> frequencies(String text)",
+    "difficulty": "Easy",
+    "starter": "import java.util.*;\n\npublic class Solution {\n    public static Map<String,Integer> frequencies(String text) {\n        // TODO: Implement your solution.\n        throw new UnsupportedOperationException(\"Not implemented\");\n    }\n}\n",
+    "solution": "import java.util.*;\n\npublic class Solution {\n    public static Map<String,Integer> frequencies(String text) {\n        Map<String,Integer> m=new HashMap<>();\n        for(String token:text.toLowerCase(Locale.ROOT).split(\"[^a-z]+\"))if(!token.isEmpty())m.put(token,m.getOrDefault(token,0)+1);\n        return m;\n    }\n}\n",
+    "tests": [
+      {
+        "name": "case-insensitive",
+        "code": "Solution.frequencies(\"Cat cat DOG dog!\").equals(Map.of(\"cat\",2,\"dog\",2))"
+      },
+      {
+        "name": "empty",
+        "code": "Solution.frequencies(\"  \").isEmpty()"
+      },
+      {
+        "name": "punctuation",
+        "code": "Solution.frequencies(\"a,b.a\").equals(Map.of(\"a\",2,\"b\",1))"
+      },
+      {
+        "name": "mixed",
+        "code": "Solution.frequencies(\"Hello WORLD hello\").equals(Map.of(\"hello\",2,\"world\",1))"
+      }
+    ],
+    "hints": [
+      "Normalize the case before using the map.",
+      "Split into word tokens; skip empty tokens."
+    ],
+    "source": "P01 / WordCounter",
+    "explanation": "Normalize tokens into a common case, ignore separators, and count occurrences by key. Test repeated and mixed-case words."
+  },
+  {
+    "id": "C012",
+    "title": "Sorted Word Count Lines",
+    "topic": "WordCounter",
+    "description": "Produce sorted lines \"word:count\" for a frequency Map, one line per word (no trailing newline), sorted case-insensitively. Adapts the WordCounter HTML table pipeline.",
+    "signature": "String sortedCounts(Map<String,Integer> freq)",
+    "difficulty": "Easy",
+    "starter": "import java.util.*;\n\npublic class Solution {\n    public static String sortedCounts(Map<String,Integer> freq) {\n        // TODO: Implement your solution.\n        throw new UnsupportedOperationException(\"Not implemented\");\n    }\n}\n",
+    "solution": "import java.util.*;\n\npublic class Solution {\n    public static String sortedCounts(Map<String,Integer> freq) {\n        ArrayList<String> keys=new ArrayList<>(freq.keySet());\n        keys.sort(String.CASE_INSENSITIVE_ORDER);\n        ArrayList<String> lines=new ArrayList<>();\n        for(String k:keys)lines.add(k+\":\"+freq.get(k));\n        return String.join(\"\\n\",lines);\n    }\n}\n",
+    "tests": [
+      {
+        "name": "sorted",
+        "code": "Solution.sortedCounts(Map.of(\"z\",3,\"a\",1,\"B\",2)).equals(\"a:1\\nB:2\\nz:3\")"
+      },
+      {
+        "name": "empty",
+        "code": "Solution.sortedCounts(Collections.emptyMap()).equals(\"\")"
+      },
+      {
+        "name": "single",
+        "code": "Solution.sortedCounts(Map.of(\"cat\",4)).equals(\"cat:4\")"
+      }
+    ],
+    "hints": [
+      "Collect map keys into a list before sorting."
+    ],
+    "source": "P01 / WordCounter",
+    "explanation": "Sort the collected map keys before output rather than relying on the map iteration order; keep counts associated with their own keys."
+  },
+  {
+    "id": "C013",
+    "title": "NaturalNumber Multiply By Ten",
+    "topic": "NaturalNumber on String",
+    "description": "Representation is a String where zero is \"\" and all other values have no leading zero. Return the updated representation after multiplyBy10(k), 0<=k<=9.",
+    "signature": "String multiplyBy10(String rep,int k)",
+    "difficulty": "Easy",
+    "starter": "import java.util.*;\n\npublic class Solution {\n    public static String multiplyBy10(String rep,int k) {\n        // TODO: Implement your solution.\n        throw new UnsupportedOperationException(\"Not implemented\");\n    }\n}\n",
+    "solution": "import java.util.*;\n\npublic class Solution {\n    public static String multiplyBy10(String rep,int k) {\n        return rep.isEmpty()&&k==0?\"\":rep+k;\n    }\n}\n",
+    "tests": [
+      {
+        "name": "ordinary",
+        "code": "Solution.multiplyBy10(\"123\",4).equals(\"1234\")"
+      },
+      {
+        "name": "zero+0",
+        "code": "Solution.multiplyBy10(\"\",0).equals(\"\")"
+      },
+      {
+        "name": "zero+7",
+        "code": "Solution.multiplyBy10(\"\",7).equals(\"7\")"
+      },
+      {
+        "name": "nonzero+0",
+        "code": "Solution.multiplyBy10(\"10\",0).equals(\"100\")"
+      }
+    ],
+    "hints": [
+      "Zero must remain canonically represented."
+    ],
+    "source": "P02 / NaturalNumber3",
+    "explanation": "For the canonical decimal representation, append the new digit to nonzero numbers. Zero needs special treatment to avoid leading zeros."
+  },
+  {
+    "id": "C014",
+    "title": "NaturalNumber Divide By Ten",
+    "topic": "NaturalNumber on String",
+    "description": "Given canonical NaturalNumber representation rep, return a 2-element List<String>: updated rep and decimal digit removed. For empty rep, result is [\"\", \"0\"].",
+    "signature": "List<String> divideBy10(String rep)",
+    "difficulty": "Easy",
+    "starter": "import java.util.*;\n\npublic class Solution {\n    public static List<String> divideBy10(String rep) {\n        // TODO: Implement your solution.\n        throw new UnsupportedOperationException(\"Not implemented\");\n    }\n}\n",
+    "solution": "import java.util.*;\n\npublic class Solution {\n    public static List<String> divideBy10(String rep) {\n        if(rep.isEmpty())return Arrays.asList(\"\",\"0\");\n        return Arrays.asList(rep.substring(0,rep.length()-1),rep.substring(rep.length()-1));\n    }\n}\n",
+    "tests": [
+      {
+        "name": "ordinary",
+        "code": "Solution.divideBy10(\"123\").equals(Arrays.asList(\"12\",\"3\"))"
+      },
+      {
+        "name": "single",
+        "code": "Solution.divideBy10(\"5\").equals(Arrays.asList(\"\",\"5\"))"
+      },
+      {
+        "name": "zero",
+        "code": "Solution.divideBy10(\"\").equals(Arrays.asList(\"\",\"0\"))"
+      }
+    ],
+    "hints": [
+      "Remove exactly the last digit."
+    ],
+    "source": "P02 / NaturalNumber3",
+    "explanation": "Remove the final digit and return it; the remaining prefix is the updated natural number. A single-digit number becomes canonical zero."
+  },
+  {
+    "id": "C015",
+    "title": "Canonical Decimal String",
+    "topic": "NaturalNumber on String",
+    "description": "Normalize a nonempty decimal-digit string by deleting leading zeroes. Represent zero with the empty string, as in NaturalNumber3.",
+    "signature": "String canonical(String digits)",
+    "difficulty": "Easy",
+    "starter": "import java.util.*;\n\npublic class Solution {\n    public static String canonical(String digits) {\n        // TODO: Implement your solution.\n        throw new UnsupportedOperationException(\"Not implemented\");\n    }\n}\n",
+    "solution": "import java.util.*;\n\npublic class Solution {\n    public static String canonical(String digits) {\n        int i=0;while(i<digits.length()&&digits.charAt(i)=='0')i++;\n        return digits.substring(i);\n    }\n}\n",
+    "tests": [
+      {
+        "name": "leading",
+        "code": "Solution.canonical(\"000157\").equals(\"157\")"
+      },
+      {
+        "name": "zero",
+        "code": "Solution.canonical(\"000\").equals(\"\")"
+      },
+      {
+        "name": "already",
+        "code": "Solution.canonical(\"901\").equals(\"901\")"
+      },
+      {
+        "name": "single zero",
+        "code": "Solution.canonical(\"0\").equals(\"\")"
+      }
+    ],
+    "hints": [
+      "Find first nonzero digit."
+    ],
+    "source": "P02",
+    "explanation": "Remove redundant leading zeros while preserving the distinguished representation of zero. Each nonzero string must begin with a nonzero digit."
+  },
+  {
+    "id": "C016",
+    "title": "Size of a BinaryTree",
+    "topic": "Tree Recursion",
+    "description": "Given a CourseSupport.Node<Integer> binary tree (null means empty), count nodes recursively. This mirrors HW12/HW21 and preserves the input naturally.",
+    "signature": "int treeSize(CourseSupport.Node<Integer> root)",
+    "difficulty": "Easy",
+    "starter": "import java.util.*;\n\npublic class Solution {\n    public static int treeSize(CourseSupport.Node<Integer> root) {\n        // TODO: Implement your solution.\n        throw new UnsupportedOperationException(\"Not implemented\");\n    }\n}\n",
+    "solution": "import java.util.*;\n\npublic class Solution {\n    public static int treeSize(CourseSupport.Node<Integer> root) {\n        if(root==null)return 0;\n        return 1+treeSize(root.left)+treeSize(root.right);\n    }\n}\n",
+    "tests": [
+      {
+        "name": "empty",
+        "code": "Solution.treeSize(null)==0"
+      },
+      {
+        "name": "leaf",
+        "code": "Solution.treeSize(CourseSupport.n(5))==1"
+      },
+      {
+        "name": "nontrivial",
+        "code": "Solution.treeSize(CourseSupport.n(5,CourseSupport.n(3),CourseSupport.n(8,null,CourseSupport.n(9))))==4"
+      }
+    ],
+    "hints": [
+      "Empty tree is base case.",
+      "Count root plus both subtrees."
+    ],
+    "source": "HW12 / HW21",
+    "explanation": "Use the empty-tree base case 0; otherwise return 1 plus the sizes of the two subtrees. Restore the source tree if its API transfers children."
+  },
+  {
+    "id": "C017",
+    "title": "Height of a BinaryTree",
+    "topic": "Tree Recursion",
+    "description": "Return height in nodes: empty tree has height 0, and a leaf has height 1.",
+    "signature": "int treeHeight(CourseSupport.Node<Integer> root)",
+    "difficulty": "Easy",
+    "starter": "import java.util.*;\n\npublic class Solution {\n    public static int treeHeight(CourseSupport.Node<Integer> root) {\n        // TODO: Implement your solution.\n        throw new UnsupportedOperationException(\"Not implemented\");\n    }\n}\n",
+    "solution": "import java.util.*;\n\npublic class Solution {\n    public static int treeHeight(CourseSupport.Node<Integer> root) {\n        if(root==null)return 0;\n        return 1+Math.max(treeHeight(root.left),treeHeight(root.right));\n    }\n}\n",
+    "tests": [
+      {
+        "name": "empty",
+        "code": "Solution.treeHeight(null)==0"
+      },
+      {
+        "name": "leaf",
+        "code": "Solution.treeHeight(CourseSupport.n(1))==1"
+      },
+      {
+        "name": "unbalanced",
+        "code": "Solution.treeHeight(CourseSupport.n(1,CourseSupport.n(2,CourseSupport.n(3),null),CourseSupport.n(4)))==3"
+      }
+    ],
+    "hints": [
+      "Height depends on longest child path."
+    ],
+    "source": "HW12 / HW21",
+    "explanation": "Use 0 for an empty tree; otherwise take 1 plus the greater of the two child heights. The recurrence differs from node count."
+  },
+  {
+    "id": "C018",
+    "title": "Maximum Label in Tree",
+    "topic": "Tree Recursion",
+    "description": "For a nonempty binary tree, return its largest integer label using recursion. Unlike a BST, no ordering is assumed.",
+    "signature": "int treeMax(CourseSupport.Node<Integer> root)",
+    "difficulty": "Easy",
+    "starter": "import java.util.*;\n\npublic class Solution {\n    public static int treeMax(CourseSupport.Node<Integer> root) {\n        // TODO: Implement your solution.\n        throw new UnsupportedOperationException(\"Not implemented\");\n    }\n}\n",
+    "solution": "import java.util.*;\n\npublic class Solution {\n    public static int treeMax(CourseSupport.Node<Integer> root) {\n        int ans=root.data;\n        if(root.left!=null)ans=Math.max(ans,treeMax(root.left));\n        if(root.right!=null)ans=Math.max(ans,treeMax(root.right));\n        return ans;\n    }\n}\n",
+    "tests": [
+      {
+        "name": "leaf",
+        "code": "Solution.treeMax(CourseSupport.n(-4))==-4"
+      },
+      {
+        "name": "general",
+        "code": "Solution.treeMax(CourseSupport.n(1,CourseSupport.n(9),CourseSupport.n(3,CourseSupport.n(15),null)))==15"
+      },
+      {
+        "name": "negative",
+        "code": "Solution.treeMax(CourseSupport.n(-10,CourseSupport.n(-3),CourseSupport.n(-20)))==-3"
+      }
+    ],
+    "hints": [
+      "Check root and every nonempty subtree."
+    ],
+    "source": "HW21",
+    "explanation": "Start with the current root, compute maxima of each nonempty child recursively, and return the greatest. Respect the nonempty input requirement."
+  },
+  {
+    "id": "C019",
+    "title": "BinaryTree Prefix Representation",
+    "topic": "Tree Recursion",
+    "description": "Return HW13 prefix representation: empty tree \"()\", otherwise root + \"(\" + left representation + right representation + \")\".",
+    "signature": "String prefix(CourseSupport.Node<Integer> root)",
+    "difficulty": "Easy",
+    "starter": "import java.util.*;\n\npublic class Solution {\n    public static String prefix(CourseSupport.Node<Integer> root) {\n        // TODO: Implement your solution.\n        throw new UnsupportedOperationException(\"Not implemented\");\n    }\n}\n",
+    "solution": "import java.util.*;\n\npublic class Solution {\n    public static String prefix(CourseSupport.Node<Integer> root) {\n        if(root==null)return \"()\";\n        return root.data+\"(\"+prefix(root.left)+prefix(root.right)+\")\";\n    }\n}\n",
+    "tests": [
+      {
+        "name": "empty",
+        "code": "Solution.prefix(null).equals(\"()\")"
+      },
+      {
+        "name": "leaf",
+        "code": "Solution.prefix(CourseSupport.n(7)).equals(\"7(()())\")"
+      },
+      {
+        "name": "left child",
+        "code": "Solution.prefix(CourseSupport.n(1,CourseSupport.n(2),null)).equals(\"1(2(()())())\")"
+      }
+    ],
+    "hints": [
+      "Use a recursive helper for both subtrees."
+    ],
+    "source": "HW13",
+    "explanation": "Represent an empty tree by (), otherwise emit root(leftRepresentation rightRepresentation). Preserve the exact nested parentheses."
+  },
+  {
+    "id": "C020",
+    "title": "Deep-Copy a BinaryTree",
+    "topic": "Tree Recursion",
+    "description": "Return a fresh, structurally equal tree with no shared nodes. Input is unchanged. Based on HW13 BinaryTree copy.",
+    "signature": "CourseSupport.Node<Integer> copyTree(CourseSupport.Node<Integer> root)",
+    "difficulty": "Medium",
+    "starter": "import java.util.*;\n\npublic class Solution {\n    public static CourseSupport.Node<Integer> copyTree(CourseSupport.Node<Integer> root) {\n        // TODO: Implement your solution.\n        throw new UnsupportedOperationException(\"Not implemented\");\n    }\n}\n",
+    "solution": "import java.util.*;\n\npublic class Solution {\n    public static CourseSupport.Node<Integer> copyTree(CourseSupport.Node<Integer> root) {\n        if(root==null)return null;\n        return new CourseSupport.Node<>(root.data,copyTree(root.left),copyTree(root.right));\n    }\n}\n",
+    "tests": [
+      {
+        "name": "empty",
+        "code": "Solution.copyTree(null)==null"
+      },
+      {
+        "name": "structure",
+        "code": "@CourseSupport.Node<Integer> t=CourseSupport.n(3,CourseSupport.n(2),CourseSupport.n(7));CourseSupport.Node<Integer> c=Solution.copyTree(t);check(CourseSupport.tree(c).equals(CourseSupport.tree(t))&&c!=t&&c.left!=t.left);"
+      },
+      {
+        "name": "mutation independence",
+        "code": "@CourseSupport.Node<Integer> t=CourseSupport.n(3,CourseSupport.n(1),null);CourseSupport.Node<Integer> c=Solution.copyTree(t);c.left.data=99;check(t.left.data==1);"
+      }
+    ],
+    "hints": [
+      "Allocate a new node for each existing node."
+    ],
+    "source": "HW13",
+    "explanation": "Construct a fresh tree with a copied root and recursively copied children. Mutating or reusing input nodes violates deep-copy expectations."
+  },
+  {
+    "id": "C021",
+    "title": "BST Membership",
+    "topic": "Binary Search Trees",
+    "description": "Return whether x occurs in an integer BST. Search only the relevant branch at each step. This mirrors HW14 and P04.",
+    "signature": "boolean bstContains(CourseSupport.Node<Integer> root,int x)",
+    "difficulty": "Easy",
+    "starter": "import java.util.*;\n\npublic class Solution {\n    public static boolean bstContains(CourseSupport.Node<Integer> root,int x) {\n        // TODO: Implement your solution.\n        throw new UnsupportedOperationException(\"Not implemented\");\n    }\n}\n",
+    "solution": "import java.util.*;\n\npublic class Solution {\n    public static boolean bstContains(CourseSupport.Node<Integer> root,int x) {\n        if(root==null)return false;\n        if(x==root.data)return true;\n        return x<root.data?bstContains(root.left,x):bstContains(root.right,x);\n    }\n}\n",
+    "tests": [
+      {
+        "name": "empty",
+        "code": "!Solution.bstContains(null,4)"
+      },
+      {
+        "name": "found",
+        "code": "Solution.bstContains(CourseSupport.n(5,CourseSupport.n(3),CourseSupport.n(8)),3)"
+      },
+      {
+        "name": "absent",
+        "code": "!Solution.bstContains(CourseSupport.n(5,CourseSupport.n(3),CourseSupport.n(8)),7)"
+      },
+      {
+        "name": "deep",
+        "code": "Solution.bstContains(CourseSupport.n(10,CourseSupport.n(5,CourseSupport.n(2),null),CourseSupport.n(12)),2)"
+      }
+    ],
+    "hints": [
+      "Compare x with root and choose only one subtree."
+    ],
+    "source": "HW14 / P04",
+    "explanation": "Compare the target with the root; recurse into only the relevant subtree, not both. Equality is the success case."
+  },
+  {
+    "id": "C022",
+    "title": "BST Insert Unique",
+    "topic": "Binary Search Trees",
+    "description": "Insert x into a BST if absent. Return root; maintain BST and avoid duplicates. Nodes are mutable.",
+    "signature": "CourseSupport.Node<Integer> bstInsert(CourseSupport.Node<Integer> root,int x)",
+    "difficulty": "Medium",
+    "starter": "import java.util.*;\n\npublic class Solution {\n    public static CourseSupport.Node<Integer> bstInsert(CourseSupport.Node<Integer> root,int x) {\n        // TODO: Implement your solution.\n        throw new UnsupportedOperationException(\"Not implemented\");\n    }\n}\n",
+    "solution": "import java.util.*;\n\npublic class Solution {\n    public static CourseSupport.Node<Integer> bstInsert(CourseSupport.Node<Integer> root,int x) {\n        if(root==null)return CourseSupport.n(x);\n        if(x<root.data)root.left=bstInsert(root.left,x);\n        else if(x>root.data)root.right=bstInsert(root.right,x);\n        return root;\n    }\n}\n",
+    "tests": [
+      {
+        "name": "empty",
+        "code": "CourseSupport.tree(Solution.bstInsert(null,5)).equals(\"5(()())\")"
+      },
+      {
+        "name": "left",
+        "code": "CourseSupport.tree(Solution.bstInsert(CourseSupport.n(5),3)).equals(\"5(3(()())())\")"
+      },
+      {
+        "name": "right",
+        "code": "CourseSupport.tree(Solution.bstInsert(CourseSupport.n(5),8)).equals(\"5(()8(()()))\")"
+      },
+      {
+        "name": "duplicate",
+        "code": "CourseSupport.tree(Solution.bstInsert(CourseSupport.n(5),5)).equals(\"5(()())\")"
+      }
+    ],
+    "hints": [
+      "Root empty creates new node.",
+      "Duplicates are not inserted in this version."
+    ],
+    "source": "HW14 / P04",
+    "explanation": "Descend until reaching an empty child position, following the comparator. For a unique-key BST, do not insert a duplicate."
+  },
+  {
+    "id": "C023",
+    "title": "Smallest Node in BST",
+    "topic": "Binary Search Trees",
+    "description": "Return the minimum integer in a nonempty BST. This is the value used as inorder successor during removal.",
+    "signature": "int smallest(CourseSupport.Node<Integer> root)",
+    "difficulty": "Easy",
+    "starter": "import java.util.*;\n\npublic class Solution {\n    public static int smallest(CourseSupport.Node<Integer> root) {\n        // TODO: Implement your solution.\n        throw new UnsupportedOperationException(\"Not implemented\");\n    }\n}\n",
+    "solution": "import java.util.*;\n\npublic class Solution {\n    public static int smallest(CourseSupport.Node<Integer> root) {\n        while(root.left!=null)root=root.left;\n        return root.data;\n    }\n}\n",
+    "tests": [
+      {
+        "name": "leaf",
+        "code": "Solution.smallest(CourseSupport.n(5))==5"
+      },
+      {
+        "name": "right subtree",
+        "code": "Solution.smallest(CourseSupport.n(10,CourseSupport.n(5,CourseSupport.n(2),null),CourseSupport.n(15)))==2"
+      }
+    ],
+    "hints": [
+      "Keep following left children."
+    ],
+    "source": "HW14 / P04",
+    "explanation": "The minimum is found by following left links until no left child remains. An empty input is outside the contract."
+  },
+  {
+    "id": "C024",
+    "title": "BST Remove a Label",
+    "topic": "Binary Search Trees",
+    "description": "Remove x from a unique-key BST, if present. If a node has two children, use the smallest label in its right subtree as replacement.",
+    "signature": "CourseSupport.Node<Integer> bstRemove(CourseSupport.Node<Integer> root,int x)",
+    "difficulty": "Hard",
+    "starter": "import java.util.*;\n\npublic class Solution {\n    public static CourseSupport.Node<Integer> bstRemove(CourseSupport.Node<Integer> root,int x) {\n        // TODO: Implement your solution.\n        throw new UnsupportedOperationException(\"Not implemented\");\n    }\n}\n",
+    "solution": "import java.util.*;\n\npublic class Solution {\n    public static CourseSupport.Node<Integer> bstRemove(CourseSupport.Node<Integer> root,int x) {\n        if(root==null)return null;\n        if(x<root.data)root.left=bstRemove(root.left,x);\n        else if(x>root.data)root.right=bstRemove(root.right,x);\n        else {\n            if(root.left==null)return root.right;\n            if(root.right==null)return root.left;\n            CourseSupport.Node<Integer> succ=root.right;\n            while(succ.left!=null)succ=succ.left;\n            root.data=succ.data;\n            root.right=bstRemove(root.right,succ.data);\n        }\n        return root;\n    }\n}\n",
+    "tests": [
+      {
+        "name": "remove leaf",
+        "code": "CourseSupport.tree(Solution.bstRemove(CourseSupport.n(5,CourseSupport.n(3),CourseSupport.n(7)),3)).equals(\"5(()7(()()))\")"
+      },
+      {
+        "name": "remove root two children",
+        "code": "CourseSupport.tree(Solution.bstRemove(CourseSupport.n(50,CourseSupport.n(30),CourseSupport.n(70,CourseSupport.n(60,CourseSupport.n(55),null),CourseSupport.n(80))),50)).equals(\"55(30(()())70(60(()())80(()())))\")"
+      },
+      {
+        "name": "remove missing",
+        "code": "CourseSupport.tree(Solution.bstRemove(CourseSupport.n(8),5)).equals(\"8(()())\")"
+      },
+      {
+        "name": "remove only root",
+        "code": "Solution.bstRemove(CourseSupport.n(8),8)==null"
+      }
+    ],
+    "hints": [
+      "Solve zero- and one-child cases before two-child case.",
+      "For two children, copy successor label then remove successor from right subtree."
+    ],
+    "source": "HW14 / P04",
+    "explanation": "Search for the target, handle zero/one-child removal directly, and for two children replace with the smallest right-subtree label and remove it there."
+  },
+  {
+    "id": "C025",
+    "title": "Insert into a Sorted Queue",
+    "topic": "Sorting & Comparators",
+    "description": "Given sorted integers in a mutable ArrayDeque, insert x while preserving ascending order. Simulates HW15 insertInOrder using a temporary queue.",
+    "signature": "void insertSorted(ArrayDeque<Integer> q,int x)",
+    "difficulty": "Medium",
+    "starter": "import java.util.*;\n\npublic class Solution {\n    public static void insertSorted(ArrayDeque<Integer> q,int x) {\n        // TODO: Implement your solution.\n        \n    }\n}\n",
+    "solution": "import java.util.*;\n\npublic class Solution {\n    public static void insertSorted(ArrayDeque<Integer> q,int x) {\n        ArrayDeque<Integer> t=new ArrayDeque<>();\n        while(!q.isEmpty()&&q.peekFirst()<=x)t.addLast(q.removeFirst());\n        t.addLast(x);\n        while(!q.isEmpty())t.addLast(q.removeFirst());\n        q.addAll(t);\n    }\n}\n",
+    "tests": [
+      {
+        "name": "middle",
+        "code": "@ArrayDeque<Integer>q=new ArrayDeque<>(Arrays.asList(1,3,5));Solution.insertSorted(q,4);check(new ArrayList<>(q).equals(Arrays.asList(1,3,4,5)));"
+      },
+      {
+        "name": "duplicate",
+        "code": "@ArrayDeque<Integer>q=new ArrayDeque<>(Arrays.asList(1,3,5));Solution.insertSorted(q,3);check(new ArrayList<>(q).equals(Arrays.asList(1,3,3,5)));"
+      },
+      {
+        "name": "ends",
+        "code": "@ArrayDeque<Integer>q=new ArrayDeque<>(Arrays.asList(1,3));Solution.insertSorted(q,0);Solution.insertSorted(q,9);check(new ArrayList<>(q).equals(Arrays.asList(0,1,3,9)));"
+      }
+    ],
+    "hints": [
+      "Move values that precede x to a temporary queue."
+    ],
+    "source": "HW15",
+    "explanation": "Copy already-sorted entries into a temporary queue until the insertion point, add x, then append the rest. The comparator determines order."
+  },
+  {
+    "id": "C026",
+    "title": "Insertion Sort a Queue",
+    "topic": "Sorting & Comparators",
+    "description": "Sort an ArrayDeque<Integer> ascending using insertion sort behavior: extract one entry at a time and insert into the correct location of a temporary sorted deque.",
+    "signature": "void insertionSort(ArrayDeque<Integer> q)",
+    "difficulty": "Medium",
+    "starter": "import java.util.*;\n\npublic class Solution {\n    public static void insertionSort(ArrayDeque<Integer> q) {\n        // TODO: Implement your solution.\n        \n    }\n}\n",
+    "solution": "import java.util.*;\n\npublic class Solution {\n    public static void insertionSort(ArrayDeque<Integer> q) {\n        ArrayDeque<Integer> sorted=new ArrayDeque<>();\n        while(!q.isEmpty()){\n            int x=q.removeFirst();\n            ArrayDeque<Integer> t=new ArrayDeque<>();\n            while(!sorted.isEmpty()&&sorted.peekFirst()<=x)t.addLast(sorted.removeFirst());\n            t.addLast(x);\n            t.addAll(sorted);\n            sorted=t;\n        }\n        q.addAll(sorted);\n    }\n}\n",
+    "tests": [
+      {
+        "name": "mixed",
+        "code": "@ArrayDeque<Integer>q=new ArrayDeque<>(Arrays.asList(4,1,3,2));Solution.insertionSort(q);check(new ArrayList<>(q).equals(Arrays.asList(1,2,3,4)));"
+      },
+      {
+        "name": "duplicates",
+        "code": "@ArrayDeque<Integer>q=new ArrayDeque<>(Arrays.asList(3,1,3,1));Solution.insertionSort(q);check(new ArrayList<>(q).equals(Arrays.asList(1,1,3,3)));"
+      },
+      {
+        "name": "empty",
+        "code": "@ArrayDeque<Integer>q=new ArrayDeque<>();Solution.insertionSort(q);check(q.isEmpty());"
+      }
+    ],
+    "hints": [
+      "Build a sorted output by repeatedly inserting extracted values."
+    ],
+    "source": "HW15",
+    "explanation": "Maintain a separate sorted queue; repeatedly remove an entry from the input and insert it at its proper position in the sorted queue."
+  },
+  {
+    "id": "C027",
+    "title": "Partition a Queue",
+    "topic": "Quicksort",
+    "description": "Return two Lists [front,back], putting input values <= pivot in front and > pivot in back while preserving relative order. Mirrors HW16 partition.",
+    "signature": "List<List<Integer>> partition(List<Integer> a,int pivot)",
+    "difficulty": "Easy",
+    "starter": "import java.util.*;\n\npublic class Solution {\n    public static List<List<Integer>> partition(List<Integer> a,int pivot) {\n        // TODO: Implement your solution.\n        throw new UnsupportedOperationException(\"Not implemented\");\n    }\n}\n",
+    "solution": "import java.util.*;\n\npublic class Solution {\n    public static List<List<Integer>> partition(List<Integer> a,int pivot) {\n        List<Integer> front=new ArrayList<>(),back=new ArrayList<>();\n        for(int x:a){if(x<=pivot)front.add(x);else back.add(x);}\n        return Arrays.asList(front,back);\n    }\n}\n",
+    "tests": [
+      {
+        "name": "mixed",
+        "code": "Solution.partition(Arrays.asList(6,3,8,6,1),6).equals(Arrays.asList(Arrays.asList(6,3,6,1),Arrays.asList(8)))"
+      },
+      {
+        "name": "empty",
+        "code": "Solution.partition(Collections.emptyList(),3).equals(Arrays.asList(Collections.emptyList(),Collections.emptyList()))"
+      },
+      {
+        "name": "all larger",
+        "code": "Solution.partition(Arrays.asList(5,7),3).equals(Arrays.asList(Collections.emptyList(),Arrays.asList(5,7)))"
+      }
+    ],
+    "hints": [
+      "Partition condition is <= pivot, not < pivot."
+    ],
+    "source": "HW16",
+    "explanation": "Compare each entry against the pivot and move it into the ≤ or > partition. Preserve all elements and handle duplicates consistently."
+  },
+  {
+    "id": "C028",
+    "title": "Recursive Quicksort",
+    "topic": "Quicksort",
+    "description": "Return a new ascending-sorted List using a recursive quicksort with the first element as pivot; do not modify input.",
+    "signature": "List<Integer> quickSort(List<Integer> a)",
+    "difficulty": "Medium",
+    "starter": "import java.util.*;\n\npublic class Solution {\n    public static List<Integer> quickSort(List<Integer> a) {\n        // TODO: Implement your solution.\n        throw new UnsupportedOperationException(\"Not implemented\");\n    }\n}\n",
+    "solution": "import java.util.*;\n\npublic class Solution {\n    public static List<Integer> quickSort(List<Integer> a) {\n        if(a.size()<=1)return new ArrayList<>(a);\n        int pivot=a.get(0);\n        List<Integer> low=new ArrayList<>(),high=new ArrayList<>();\n        for(int i=1;i<a.size();i++){int x=a.get(i);if(x<=pivot)low.add(x);else high.add(x);}\n        List<Integer> out=quickSort(low);out.add(pivot);out.addAll(quickSort(high));return out;\n    }\n}\n",
+    "tests": [
+      {
+        "name": "mixed",
+        "code": "Solution.quickSort(Arrays.asList(5,1,8,5,3)).equals(Arrays.asList(1,3,5,5,8))"
+      },
+      {
+        "name": "empty",
+        "code": "Solution.quickSort(Collections.emptyList()).isEmpty()"
+      },
+      {
+        "name": "descending",
+        "code": "Solution.quickSort(Arrays.asList(4,3,2,1)).equals(Arrays.asList(1,2,3,4))"
+      },
+      {
+        "name": "duplicates",
+        "code": "Solution.quickSort(Arrays.asList(2,2,2)).equals(Arrays.asList(2,2,2))"
+      }
+    ],
+    "hints": [
+      "Pick pivot, partition remaining, recursively sort partitions."
+    ],
+    "source": "HW16",
+    "explanation": "Choose a pivot, partition the remaining entries, recursively sort both partitions, and recombine left + pivot + right. Length 0 or 1 is the base case."
+  },
+  {
+    "id": "C029",
+    "title": "Sift Down Min-Heap",
+    "topic": "Heapsort",
+    "description": "Fix the min-heap ordering starting at index i in array a where both child subtrees are already valid min-heaps. Active entries are indices 0..size-1. Modify in place.",
+    "signature": "void siftDown(int[] a,int size,int i)",
+    "difficulty": "Medium",
+    "starter": "import java.util.*;\n\npublic class Solution {\n    public static void siftDown(int[] a,int size,int i) {\n        // TODO: Implement your solution.\n        \n    }\n}\n",
+    "solution": "import java.util.*;\n\npublic class Solution {\n    public static void siftDown(int[] a,int size,int i) {\n        while(2*i+1<size){\n            int c=2*i+1;\n            if(c+1<size&&a[c+1]<a[c])c++;\n            if(a[i]<=a[c])break;\n            int temp=a[i];a[i]=a[c];a[c]=temp;i=c;\n        }\n    }\n}\n",
+    "tests": [
+      {
+        "name": "one swap",
+        "code": "@int[] a={9,3,5,7};Solution.siftDown(a,4,0);check(Arrays.equals(a,new int[]{3,7,5,9}));"
+      },
+      {
+        "name": "already valid",
+        "code": "@int[] a={2,3,5};Solution.siftDown(a,3,0);check(Arrays.equals(a,new int[]{2,3,5}));"
+      },
+      {
+        "name": "deeper",
+        "code": "@int[] a={20,3,4,5,6,7,8};Solution.siftDown(a,7,0);check(Arrays.equals(a,new int[]{3,5,4,20,6,7,8}));"
+      },
+      {
+        "name": "no children",
+        "code": "@int[] a={8};Solution.siftDown(a,1,0);check(Arrays.equals(a,new int[]{8}));"
+      }
+    ],
+    "hints": [
+      "Compare both children and select smaller.",
+      "Continue from the child index after swapping."
+    ],
+    "source": "HW17 / P05",
+    "explanation": "At each step compare the current item with the smaller child; swap only if the heap order is violated. Continue until ordered or at a leaf."
+  },
+  {
+    "id": "C030",
+    "title": "Build a Min-Heap",
+    "topic": "Heapsort",
+    "description": "Convert an int[] into a valid min-heap in place. Use bottom-up heapify; any valid heap is accepted. Must preserve input multiset.",
+    "signature": "void buildHeap(int[] a)",
+    "difficulty": "Medium",
+    "starter": "import java.util.*;\n\npublic class Solution {\n    public static void buildHeap(int[] a) {\n        // TODO: Implement your solution.\n        \n    }\n}\n",
+    "solution": "import java.util.*;\n\npublic class Solution {\n    public static void buildHeap(int[] a) {\n        for(int i=a.length/2-1;i>=0;i--){\n            int k=i;\n            while(2*k+1<a.length){int c=2*k+1;if(c+1<a.length&&a[c+1]<a[c])c++;\n                if(a[k]<=a[c])break;int t=a[k];a[k]=a[c];a[c]=t;k=c;\n            }\n        }\n    }\n}\n",
+    "tests": [
+      {
+        "name": "five values",
+        "code": "@int[] a={9,3,8,1,5};int[] orig=a.clone();Solution.buildHeap(a);check(heap(a)&&sameBag(a,orig));"
+      },
+      {
+        "name": "empty",
+        "code": "@int[] a={};Solution.buildHeap(a);check(heap(a));"
+      },
+      {
+        "name": "duplicates",
+        "code": "@int[] a={4,4,2,2};int[] orig=a.clone();Solution.buildHeap(a);check(heap(a)&&sameBag(a,orig));"
+      },
+      {
+        "name": "single",
+        "code": "@int[] a={9};Solution.buildHeap(a);check(heap(a));"
+      }
+    ],
+    "hints": [
+      "Start at last parent floor(n/2)-1.",
+      "Sift each internal node down."
+    ],
+    "source": "HW17 / P05",
+    "explanation": "Heapify by sifting down internal nodes from the last parent to the root. Verify the resulting array satisfies all parent-child comparisons."
+  },
+  {
+    "id": "C031",
+    "title": "Remove Minimum from Heap",
+    "topic": "Heapsort",
+    "description": "Given a nonempty valid min-heap int[], return the minimum. The input array may be mutated. Return value only; caller assumes the last element becomes inactive. Implement root removal and siftDown on active prefix.",
+    "signature": "int heapPop(int[] a)",
+    "difficulty": "Medium",
+    "starter": "import java.util.*;\n\npublic class Solution {\n    public static int heapPop(int[] a) {\n        // TODO: Implement your solution.\n        throw new UnsupportedOperationException(\"Not implemented\");\n    }\n}\n",
+    "solution": "import java.util.*;\n\npublic class Solution {\n    public static int heapPop(int[] a) {\n        int result=a[0];int last=a.length-1;\n        a[0]=a[last];\n        int size=last,i=0;\n        while(2*i+1<size){int c=2*i+1;if(c+1<size&&a[c+1]<a[c])c++;\n        if(a[i]<=a[c])break;int x=a[i];a[i]=a[c];a[c]=x;i=c;}\n        return result;\n    }\n}\n",
+    "tests": [
+      {
+        "name": "five values",
+        "code": "@int[] a={2,5,6,8,7};int x=Solution.heapPop(a);check(x==2&&heapPrefix(a,a.length-1));"
+      },
+      {
+        "name": "singleton",
+        "code": "@int[] a={9};check(Solution.heapPop(a)==9);"
+      },
+      {
+        "name": "duplicates",
+        "code": "@int[] a={1,1,3};check(Solution.heapPop(a)==1&&heapPrefix(a,2));"
+      }
+    ],
+    "hints": [
+      "Store the root before replacing it with the last active entry."
+    ],
+    "source": "HW17 / P05",
+    "explanation": "Save the minimum root, replace it with the last active item, decrease size, and sift down. Edge cases include size 0 and 1."
+  },
+  {
+    "id": "C032",
+    "title": "Check Heap Ordering (Any Shape)",
+    "topic": "Heapsort",
+    "description": "Return true iff every parent <= its children in a binary tree. Do not require complete shape. This is specifically HW17 satisfiesHeapOrdering.",
+    "signature": "boolean heapOrdered(CourseSupport.Node<Integer> root)",
+    "difficulty": "Easy",
+    "starter": "import java.util.*;\n\npublic class Solution {\n    public static boolean heapOrdered(CourseSupport.Node<Integer> root) {\n        // TODO: Implement your solution.\n        throw new UnsupportedOperationException(\"Not implemented\");\n    }\n}\n",
+    "solution": "import java.util.*;\n\npublic class Solution {\n    public static boolean heapOrdered(CourseSupport.Node<Integer> root) {\n        if(root==null)return true;\n        if(root.left!=null&&(root.data>root.left.data||!heapOrdered(root.left)))return false;\n        if(root.right!=null&&(root.data>root.right.data||!heapOrdered(root.right)))return false;\n        return true;\n    }\n}\n",
+    "tests": [
+      {
+        "name": "empty",
+        "code": "Solution.heapOrdered(null)"
+      },
+      {
+        "name": "ordered",
+        "code": "Solution.heapOrdered(CourseSupport.n(2,CourseSupport.n(5,CourseSupport.n(9),null),CourseSupport.n(8)))"
+      },
+      {
+        "name": "violation",
+        "code": "!Solution.heapOrdered(CourseSupport.n(2,CourseSupport.n(1),CourseSupport.n(9)))"
+      },
+      {
+        "name": "noncomplete but ordered",
+        "code": "Solution.heapOrdered(CourseSupport.n(1,null,CourseSupport.n(7)))"
+      }
+    ],
+    "hints": [
+      "Only compare each parent and direct children; recurse.",
+      "Do not test completeness here."
+    ],
+    "source": "HW17",
+    "explanation": "Recursively check the root against each present child and check each child subtree. Shape completeness is intentionally not required here."
+  },
+  {
+    "id": "C033",
+    "title": "Check Complete Binary Tree",
+    "topic": "Heapsort",
+    "description": "Return true iff a binary tree has complete-tree shape (all levels full except possibly last, last filled left to right). Any labels permitted.",
+    "signature": "boolean complete(CourseSupport.Node<Integer> root)",
+    "difficulty": "Medium",
+    "starter": "import java.util.*;\n\npublic class Solution {\n    public static boolean complete(CourseSupport.Node<Integer> root) {\n        // TODO: Implement your solution.\n        throw new UnsupportedOperationException(\"Not implemented\");\n    }\n}\n",
+    "solution": "import java.util.*;\n\npublic class Solution {\n    public static boolean complete(CourseSupport.Node<Integer> root) {\n        Queue<CourseSupport.Node<Integer>> q=new LinkedList<>();q.add(root);boolean gap=false;\n        while(!q.isEmpty()){\n            CourseSupport.Node<Integer> x=q.remove();\n            if(x==null){gap=true;continue;}\n            if(gap)return false;\n            q.add(x.left);q.add(x.right);\n        }\n        return true;\n    }\n}\n",
+    "tests": [
+      {
+        "name": "empty",
+        "code": "Solution.complete(null)"
+      },
+      {
+        "name": "complete",
+        "code": "Solution.complete(CourseSupport.n(1,CourseSupport.n(2,CourseSupport.n(4),CourseSupport.n(5)),CourseSupport.n(3)))"
+      },
+      {
+        "name": "right gap",
+        "code": "!Solution.complete(CourseSupport.n(1,null,CourseSupport.n(3)))"
+      },
+      {
+        "name": "bad lower level",
+        "code": "!Solution.complete(CourseSupport.n(1,CourseSupport.n(2,null,CourseSupport.n(4)),CourseSupport.n(3)))"
+      }
+    ],
+    "hints": [
+      "Breadth-first traversal: after the first missing child, no real node may appear."
+    ],
+    "source": "HW17 additional",
+    "explanation": "A complete tree fills levels left-to-right. During breadth-first traversal, once a missing child appears, no later node may have a child."
+  },
+  {
+    "id": "C034",
+    "title": "SortingMachine: Extract k Minima",
+    "topic": "SortingMachine",
+    "description": "Given integer list (duplicates retained) and k between 0 and size, return the k smallest elements in ascending order using PriorityQueue rather than sorting the full collection.",
+    "signature": "List<Integer> extractK(List<Integer> a,int k)",
+    "difficulty": "Easy",
+    "starter": "import java.util.*;\n\npublic class Solution {\n    public static List<Integer> extractK(List<Integer> a,int k) {\n        // TODO: Implement your solution.\n        throw new UnsupportedOperationException(\"Not implemented\");\n    }\n}\n",
+    "solution": "import java.util.*;\n\npublic class Solution {\n    public static List<Integer> extractK(List<Integer> a,int k) {\n        PriorityQueue<Integer> pq=new PriorityQueue<>(a);\n        ArrayList<Integer> out=new ArrayList<>();\n        for(int i=0;i<k;i++)out.add(pq.remove());\n        return out;\n    }\n}\n",
+    "tests": [
+      {
+        "name": "duplicates",
+        "code": "Solution.extractK(Arrays.asList(9,3,3,7,5,11),2).equals(Arrays.asList(3,3))"
+      },
+      {
+        "name": "all",
+        "code": "Solution.extractK(Arrays.asList(8,1,4),3).equals(Arrays.asList(1,4,8))"
+      },
+      {
+        "name": "none",
+        "code": "Solution.extractK(Arrays.asList(4,3),0).isEmpty()"
+      }
+    ],
+    "hints": [
+      "A min-heap naturally returns the smallest active entry."
+    ],
+    "source": "P05 / Practice MT2",
+    "explanation": "Use the heap to extract the minimum k times while retaining duplicates. The extracted list is sorted ascending and the remaining heap stays valid."
+  },
+  {
+    "id": "C035",
+    "title": "Singly Linked Stack Push",
+    "topic": "Linked Lists",
+    "description": "Given CourseSupport.LinkedStack with top, length, and LNode fields, push x in O(1). Directly adapts HW18 Stack2.",
+    "signature": "void stackPush(CourseSupport.LinkedStack st,int x)",
+    "difficulty": "Easy",
+    "starter": "import java.util.*;\n\npublic class Solution {\n    public static void stackPush(CourseSupport.LinkedStack st,int x) {\n        // TODO: Implement your solution.\n        \n    }\n}\n",
+    "solution": "import java.util.*;\n\npublic class Solution {\n    public static void stackPush(CourseSupport.LinkedStack st,int x) {\n        CourseSupport.LNode n=new CourseSupport.LNode(x);\n        n.next=st.top;st.top=n;st.length++;\n    }\n}\n",
+    "tests": [
+      {
+        "name": "empty",
+        "code": "@CourseSupport.LinkedStack st=new CourseSupport.LinkedStack();Solution.stackPush(st,7);check(st.length==1&&st.view().equals(\"7,\"));"
+      },
+      {
+        "name": "twice",
+        "code": "@CourseSupport.LinkedStack st=new CourseSupport.LinkedStack();Solution.stackPush(st,4);Solution.stackPush(st,8);check(st.length==2&&st.view().equals(\"8,4,\"));"
+      }
+    ],
+    "hints": [
+      "Prepend new node at head."
+    ],
+    "source": "HW18",
+    "explanation": "Link the new node to the previous top, then update top. This is constant time and does not touch the remaining chain."
+  },
+  {
+    "id": "C036",
+    "title": "Singly Linked Stack Pop",
+    "topic": "Linked Lists",
+    "description": "Remove and return the top value from a nonempty CourseSupport.LinkedStack in O(1). Update length and top pointer.",
+    "signature": "int stackPop(CourseSupport.LinkedStack st)",
+    "difficulty": "Easy",
+    "starter": "import java.util.*;\n\npublic class Solution {\n    public static int stackPop(CourseSupport.LinkedStack st) {\n        // TODO: Implement your solution.\n        throw new UnsupportedOperationException(\"Not implemented\");\n    }\n}\n",
+    "solution": "import java.util.*;\n\npublic class Solution {\n    public static int stackPop(CourseSupport.LinkedStack st) {\n        int x=st.top.data;st.top=st.top.next;st.length--;return x;\n    }\n}\n",
+    "tests": [
+      {
+        "name": "one",
+        "code": "@CourseSupport.LinkedStack st=new CourseSupport.LinkedStack();st.top=new CourseSupport.LNode(7);st.length=1;check(Solution.stackPop(st)==7&&st.top==null&&st.length==0);"
+      },
+      {
+        "name": "two",
+        "code": "@CourseSupport.LinkedStack st=new CourseSupport.LinkedStack();st.top=new CourseSupport.LNode(8);st.top.next=new CourseSupport.LNode(4);st.length=2;check(Solution.stackPop(st)==8&&st.view().equals(\"4,\")&&st.length==1);"
+      }
+    ],
+    "hints": [
+      "The top node contains the item to return."
+    ],
+    "source": "HW18",
+    "explanation": "Save the old top value, advance the top pointer, and decrement size. The removed node becomes unreachable from the stack."
+  },
+  {
+    "id": "C037",
+    "title": "Reverse-Queue Enqueue with Sentinels",
+    "topic": "Linked Lists",
+    "description": "Implement enqueue at the abstract rear of CourseSupport.ReverseQueue, whose real nodes are stored backward between preFront and postRear. Maintain both prev and next pointers and length.",
+    "signature": "void enqueueRev(CourseSupport.ReverseQueue q,int x)",
+    "difficulty": "Medium",
+    "starter": "import java.util.*;\n\npublic class Solution {\n    public static void enqueueRev(CourseSupport.ReverseQueue q,int x) {\n        // TODO: Implement your solution.\n        \n    }\n}\n",
+    "solution": "import java.util.*;\n\npublic class Solution {\n    public static void enqueueRev(CourseSupport.ReverseQueue q,int x) {\n        CourseSupport.LNode n=new CourseSupport.LNode(x);\n        CourseSupport.LNode old=q.preFront.next;\n        n.prev=q.preFront;n.next=old;\n        q.preFront.next=n;old.prev=n;q.length++;\n    }\n}\n",
+    "tests": [
+      {
+        "name": "empty",
+        "code": "@CourseSupport.ReverseQueue q=new CourseSupport.ReverseQueue();Solution.enqueueRev(q,5);check(q.integrity()&&q.values().equals(Arrays.asList(5)));"
+      },
+      {
+        "name": "multiple",
+        "code": "@CourseSupport.ReverseQueue q=new CourseSupport.ReverseQueue();Solution.enqueueRev(q,5);Solution.enqueueRev(q,7);check(q.integrity()&&q.values().equals(Arrays.asList(5,7)));"
+      }
+    ],
+    "hints": [
+      "New abstract rear belongs immediately after preFront.",
+      "Four pointer assignments are needed."
+    ],
+    "source": "Practice MT2 Q14 / P06",
+    "explanation": "Insert the new rear entry immediately after preFront because the physical node order is reversed. Reconnect next and prev in both directions."
+  },
+  {
+    "id": "C038",
+    "title": "Reverse-Queue Dequeue with Sentinels",
+    "topic": "Linked Lists",
+    "description": "Implement dequeue at abstract front of CourseSupport.ReverseQueue; real nodes are stored backward between preFront and postRear. Queue is nonempty.",
+    "signature": "int dequeueRev(CourseSupport.ReverseQueue q)",
+    "difficulty": "Medium",
+    "starter": "import java.util.*;\n\npublic class Solution {\n    public static int dequeueRev(CourseSupport.ReverseQueue q) {\n        // TODO: Implement your solution.\n        throw new UnsupportedOperationException(\"Not implemented\");\n    }\n}\n",
+    "solution": "import java.util.*;\n\npublic class Solution {\n    public static int dequeueRev(CourseSupport.ReverseQueue q) {\n        CourseSupport.LNode x=q.postRear.prev;\n        int value=x.data;CourseSupport.LNode prev=x.prev;\n        q.postRear.prev=prev;prev.next=q.postRear;q.length--;return value;\n    }\n}\n",
+    "tests": [
+      {
+        "name": "single",
+        "code": "@CourseSupport.ReverseQueue q=new CourseSupport.ReverseQueue();CourseSupport.LNode n=new CourseSupport.LNode(5);q.preFront.next=n;n.prev=q.preFront;n.next=q.postRear;q.postRear.prev=n;q.length=1;check(Solution.dequeueRev(q)==5&&q.integrity()&&q.length==0);"
+      },
+      {
+        "name": "two",
+        "code": "@CourseSupport.ReverseQueue q=new CourseSupport.ReverseQueue();CourseSupport.LNode a=new CourseSupport.LNode(7),b=new CourseSupport.LNode(5);q.preFront.next=a;a.prev=q.preFront;a.next=b;b.prev=a;b.next=q.postRear;q.postRear.prev=b;q.length=2;check(Solution.dequeueRev(q)==5&&q.integrity()&&q.values().equals(Arrays.asList(7)));"
+      }
+    ],
+    "hints": [
+      "Front is postRear.prev.",
+      "Bypass the node in both directions."
+    ],
+    "source": "Practice MT2 Q14",
+    "explanation": "Read front from postRear.prev; unlink it by connecting its predecessor directly to postRear, then decrement length."
+  },
+  {
+    "id": "C039",
+    "title": "List Cursor Retreat",
+    "topic": "Linked Lists",
+    "description": "Given CourseSupport.CursorList with left/right ArrayLists storing cursor partitions, move the last element from left to the front of right. Left nonempty. Mirrors HW19/P06 retreat semantics.",
+    "signature": "void retreat(CourseSupport.CursorList list)",
+    "difficulty": "Easy",
+    "starter": "import java.util.*;\n\npublic class Solution {\n    public static void retreat(CourseSupport.CursorList list) {\n        // TODO: Implement your solution.\n        \n    }\n}\n",
+    "solution": "import java.util.*;\n\npublic class Solution {\n    public static void retreat(CourseSupport.CursorList list) {\n        int x=list.left.remove(list.left.size()-1);list.right.add(0,x);\n    }\n}\n",
+    "tests": [
+      {
+        "name": "middle",
+        "code": "@CourseSupport.CursorList l=new CourseSupport.CursorList(Arrays.asList(1,2),Arrays.asList(3,4));Solution.retreat(l);check(l.view().equals(\"[1]|[2, 3, 4]\"));"
+      },
+      {
+        "name": "front",
+        "code": "@CourseSupport.CursorList l=new CourseSupport.CursorList(Arrays.asList(7),Arrays.asList(9));Solution.retreat(l);check(l.view().equals(\"[]|[7, 9]\"));"
+      }
+    ],
+    "hints": [
+      "The combined list must remain unchanged."
+    ],
+    "source": "HW19 / P06",
+    "explanation": "Move the left/right boundary one entry toward the start without changing concatenated contents. An empty left half is invalid."
+  },
+  {
+    "id": "C040",
+    "title": "List Cursor Advance",
+    "topic": "Linked Lists",
+    "description": "Given CourseSupport.CursorList, move first right element to the end of left. Right nonempty. This is the inverse of retreat.",
+    "signature": "void advance(CourseSupport.CursorList list)",
+    "difficulty": "Easy",
+    "starter": "import java.util.*;\n\npublic class Solution {\n    public static void advance(CourseSupport.CursorList list) {\n        // TODO: Implement your solution.\n        \n    }\n}\n",
+    "solution": "import java.util.*;\n\npublic class Solution {\n    public static void advance(CourseSupport.CursorList list) {\n        int x=list.right.remove(0);list.left.add(x);\n    }\n}\n",
+    "tests": [
+      {
+        "name": "middle",
+        "code": "@CourseSupport.CursorList l=new CourseSupport.CursorList(Arrays.asList(1,2),Arrays.asList(3,4));Solution.advance(l);check(l.view().equals(\"[1, 2, 3]|[4]\"));"
+      },
+      {
+        "name": "last",
+        "code": "@CourseSupport.CursorList l=new CourseSupport.CursorList(Collections.emptyList(),Arrays.asList(9));Solution.advance(l);check(l.view().equals(\"[9]|[]\"));"
+      }
+    ],
+    "hints": [
+      "Maintain left*right concatenation."
+    ],
+    "source": "HW19",
+    "explanation": "Advance the boundary one entry toward the finish, transferring the right-front value to left-end. The total sequence stays fixed."
+  },
+  {
+    "id": "C041",
+    "title": "Count CALLs in Statement AST",
+    "topic": "Statement & Program",
+    "description": "Given a simplified CourseSupport.SNode AST with kinds BLOCK/IF/IF_ELSE/WHILE/CALL, count all CALL nodes recursively, including custom names. Original AST is unchanged.",
+    "signature": "int countCalls(CourseSupport.SNode root)",
+    "difficulty": "Easy",
+    "starter": "import java.util.*;\n\npublic class Solution {\n    public static int countCalls(CourseSupport.SNode root) {\n        // TODO: Implement your solution.\n        throw new UnsupportedOperationException(\"Not implemented\");\n    }\n}\n",
+    "solution": "import java.util.*;\n\npublic class Solution {\n    public static int countCalls(CourseSupport.SNode root) {\n        int n=root.kind.equals(\"CALL\")?1:0;\n        for(CourseSupport.SNode child:root.children)n+=countCalls(child);\n        return n;\n    }\n}\n",
+    "tests": [
+      {
+        "name": "single",
+        "code": "Solution.countCalls(CourseSupport.SNode.call(\"move\"))==1"
+      },
+      {
+        "name": "nested",
+        "code": "Solution.countCalls(CourseSupport.SNode.block(CourseSupport.SNode.call(\"move\"),CourseSupport.SNode.when(\"WHILE\",\"TRUE\",CourseSupport.SNode.block(CourseSupport.SNode.call(\"skip\"),CourseSupport.SNode.call(\"turnleft\")))))==3"
+      },
+      {
+        "name": "empty",
+        "code": "Solution.countCalls(CourseSupport.SNode.block())==0"
+      }
+    ],
+    "hints": [
+      "Base leaf counts one if CALL; otherwise recurse children."
+    ],
+    "source": "HW22",
+    "explanation": "Traverse the AST by kind: recurse through BLOCK/IF/IF_ELSE/WHILE, count calls at CALL leaves, and reconstruct transferred nodes."
+  },
+  {
+    "id": "C042",
+    "title": "Count Primitive Calls in AST",
+    "topic": "Statement & Program",
+    "description": "Count only primitive BL calls among move, turnleft, turnright, infect, skip, and turnback. Custom calls do not count. Use CourseSupport.SNode.",
+    "signature": "int countPrimitive(CourseSupport.SNode root)",
+    "difficulty": "Medium",
+    "starter": "import java.util.*;\n\npublic class Solution {\n    public static int countPrimitive(CourseSupport.SNode root) {\n        // TODO: Implement your solution.\n        throw new UnsupportedOperationException(\"Not implemented\");\n    }\n}\n",
+    "solution": "import java.util.*;\n\npublic class Solution {\n    public static int countPrimitive(CourseSupport.SNode root) {\n        if(root.kind.equals(\"CALL\"))return Arrays.asList(\"move\",\"turnleft\",\"turnright\",\"infect\",\"skip\",\"turnback\").contains(root.call)?1:0;\n        int n=0;for(CourseSupport.SNode c:root.children)n+=countPrimitive(c);return n;\n    }\n}\n",
+    "tests": [
+      {
+        "name": "custom",
+        "code": "Solution.countPrimitive(CourseSupport.SNode.call(\"LookAround\"))==0"
+      },
+      {
+        "name": "primitive",
+        "code": "Solution.countPrimitive(CourseSupport.SNode.call(\"move\"))==1"
+      },
+      {
+        "name": "nested",
+        "code": "Solution.countPrimitive(CourseSupport.SNode.block(CourseSupport.SNode.call(\"move\"),CourseSupport.SNode.call(\"LookAround\"),CourseSupport.SNode.call(\"skip\")))==2"
+      }
+    ],
+    "hints": [
+      "A CALL is not necessarily a primitive instruction."
+    ],
+    "source": "HW22",
+    "explanation": "Only primitive instruction CALLs contribute. User-defined instruction names may need different handling; follow the task’s primitive set."
+  },
+  {
+    "id": "C043",
+    "title": "Count skip Calls in AST",
+    "topic": "Statement & Program",
+    "description": "Return the number of CALL(\"skip\") nodes in a simplified AST, preserving its value. Mirrors practice exam extra Q18.",
+    "signature": "int countSkips(CourseSupport.SNode root)",
+    "difficulty": "Easy",
+    "starter": "import java.util.*;\n\npublic class Solution {\n    public static int countSkips(CourseSupport.SNode root) {\n        // TODO: Implement your solution.\n        throw new UnsupportedOperationException(\"Not implemented\");\n    }\n}\n",
+    "solution": "import java.util.*;\n\npublic class Solution {\n    public static int countSkips(CourseSupport.SNode root) {\n        int n=root.kind.equals(\"CALL\")&&\"skip\".equals(root.call)?1:0;\n        for(CourseSupport.SNode child:root.children)n+=countSkips(child);\n        return n;\n    }\n}\n",
+    "tests": [
+      {
+        "name": "none",
+        "code": "Solution.countSkips(CourseSupport.SNode.block(CourseSupport.SNode.call(\"move\")))==0"
+      },
+      {
+        "name": "nested",
+        "code": "Solution.countSkips(CourseSupport.SNode.when(\"WHILE\",\"TRUE\",CourseSupport.SNode.block(CourseSupport.SNode.call(\"skip\"),CourseSupport.SNode.when(\"IF\",\"RANDOM\",CourseSupport.SNode.block(CourseSupport.SNode.call(\"skip\"))))))==2"
+      },
+      {
+        "name": "root call",
+        "code": "Solution.countSkips(CourseSupport.SNode.call(\"skip\"))==1"
+      }
+    ],
+    "hints": [
+      "Only a CALL whose name equals skip contributes one."
+    ],
+    "source": "Practice MT2 Q18",
+    "explanation": "Count one for CALL(skip), recurse over every branch and loop body, and restore the original tree. This counts syntax, not runtime executions."
+  },
+  {
+    "id": "C044",
+    "title": "Rename Calls in AST",
+    "topic": "Statement & Program",
+    "description": "Mutate an AST by changing every CALL whose name equals oldName to newName. Other kinds and conditions remain unchanged. Mirrors HW25 renameInstruction.",
+    "signature": "void renameCalls(CourseSupport.SNode root,String oldName,String newName)",
+    "difficulty": "Medium",
+    "starter": "import java.util.*;\n\npublic class Solution {\n    public static void renameCalls(CourseSupport.SNode root,String oldName,String newName) {\n        // TODO: Implement your solution.\n        \n    }\n}\n",
+    "solution": "import java.util.*;\n\npublic class Solution {\n    public static void renameCalls(CourseSupport.SNode root,String oldName,String newName) {\n        if(root.kind.equals(\"CALL\")&&root.call.equals(oldName))root.call=newName;\n        for(CourseSupport.SNode child:root.children)renameCalls(child,oldName,newName);\n    }\n}\n",
+    "tests": [
+      {
+        "name": "nested",
+        "code": "@CourseSupport.SNode s=CourseSupport.SNode.block(CourseSupport.SNode.call(\"move\"),CourseSupport.SNode.when(\"IF\",\"TRUE\",CourseSupport.SNode.block(CourseSupport.SNode.call(\"move\"))));Solution.renameCalls(s,\"move\",\"go\");check(s.repr().equals(\"BLOCK[CALL:go[],IF:TRUE[BLOCK[CALL:go[],],],]\"));"
+      },
+      {
+        "name": "not found",
+        "code": "@CourseSupport.SNode s=CourseSupport.SNode.call(\"skip\");Solution.renameCalls(s,\"move\",\"go\");check(s.call.equals(\"skip\"));"
+      }
+    ],
+    "hints": [
+      "Apply to matching CALL leaf and traverse all child subtrees."
+    ],
+    "source": "HW25",
+    "explanation": "At a CALL leaf compare the name with oldName and replace it if equal; recursively process all subtree kinds and preserve original structure."
+  },
+  {
+    "id": "C045",
+    "title": "Pretty Print a BL Statement",
+    "topic": "Statement & Program",
+    "description": "Render simplified BL AST using two spaces per nesting level. BLOCK emits children; CALL emits its name; WHILE emits \"WHILE condition DO\", its body, then \"END WHILE\". Other kinds are not tested.",
+    "signature": "String pretty(CourseSupport.SNode root,int indent)",
+    "difficulty": "Hard",
+    "starter": "import java.util.*;\n\npublic class Solution {\n    public static String pretty(CourseSupport.SNode root,int indent) {\n        // TODO: Implement your solution.\n        throw new UnsupportedOperationException(\"Not implemented\");\n    }\n}\n",
+    "solution": "import java.util.*;\n\npublic class Solution {\n    public static String pretty(CourseSupport.SNode root,int indent) {\n        String pad=\" \".repeat(indent);\n        switch(root.kind){\n        case \"BLOCK\": {StringBuilder out=new StringBuilder();for(CourseSupport.SNode c:root.children)out.append(pretty(c,indent));return out.toString();}\n        case \"CALL\": return pad+root.call+\"\\n\";\n        case \"WHILE\":return pad+\"WHILE \"+root.condition+\" DO\\n\"+pretty(root.children.get(0),indent+2)+pad+\"END WHILE\\n\";\n        default: return \"\";\n        }\n    }\n}\n",
+    "tests": [
+      {
+        "name": "call",
+        "code": "Solution.pretty(CourseSupport.SNode.call(\"move\"),0).equals(\"move\\n\")"
+      },
+      {
+        "name": "block",
+        "code": "Solution.pretty(CourseSupport.SNode.block(CourseSupport.SNode.call(\"move\"),CourseSupport.SNode.call(\"skip\")),2).equals(\"  move\\n  skip\\n\")"
+      },
+      {
+        "name": "while",
+        "code": "Solution.pretty(CourseSupport.SNode.when(\"WHILE\",\"true\",CourseSupport.SNode.block(CourseSupport.SNode.call(\"move\"))),0).equals(\"WHILE true DO\\n  move\\nEND WHILE\\n\")"
+      }
+    ],
+    "hints": [
+      "BLOCK does not print an opening/closing line.",
+      "Indent the WHILE body by 2 spaces."
+    ],
+    "source": "HW24",
+    "explanation": "Indent children at offset + INDENT_SIZE, print matching IF/ELSE/WHILE boundaries, and reassemble each Statement after recursive printing."
+  },
+  {
+    "id": "C046",
+    "title": "Count Skip Calls in Program",
+    "topic": "Statement & Program",
+    "description": "A CourseSupport.BProgram has context Map<String,SNode> and a main body SNode. Count CALL skip occurrences in both. This is practice exam extra Q19.",
+    "signature": "int programSkips(CourseSupport.BProgram p)",
+    "difficulty": "Medium",
+    "starter": "import java.util.*;\n\npublic class Solution {\n    public static int programSkips(CourseSupport.BProgram p) {\n        // TODO: Implement your solution.\n        throw new UnsupportedOperationException(\"Not implemented\");\n    }\n}\n",
+    "solution": "import java.util.*;\n\npublic class Solution {\n    public static int programSkips(CourseSupport.BProgram p) {\n        int result=count(p.body);for(CourseSupport.SNode s:p.context.values())result+=count(s);return result;\n        }\n        private static int count(CourseSupport.SNode s){int n=(s.kind.equals(\"CALL\")&&\"skip\".equals(s.call))?1:0;for(CourseSupport.SNode c:s.children)n+=count(c);return n;\n    }\n}\n",
+    "tests": [
+      {
+        "name": "main only",
+        "code": "@CourseSupport.BProgram p=new CourseSupport.BProgram(\"Bug\");p.body=CourseSupport.SNode.block(CourseSupport.SNode.call(\"skip\"));check(Solution.programSkips(p)==1);"
+      },
+      {
+        "name": "context+body",
+        "code": "@CourseSupport.BProgram p=new CourseSupport.BProgram(\"Bug\");p.context.put(\"X\",CourseSupport.SNode.block(CourseSupport.SNode.call(\"skip\"),CourseSupport.SNode.call(\"skip\")));p.body=CourseSupport.SNode.block(CourseSupport.SNode.call(\"skip\"));check(Solution.programSkips(p)==3);"
+      }
+    ],
+    "hints": [
+      "Do not forget instructions defined in the context."
+    ],
+    "source": "Practice MT2 Q19",
+    "explanation": "Sum skip calls over every definition in the context and the main body, using the Statement helper. Swap both pieces back to preserve the Program."
+  },
+  {
+    "id": "C047",
+    "title": "Rename a Program Definition and Calls",
+    "topic": "Statement & Program",
+    "description": "Mutate BProgram: rename a user-defined instruction key oldName to newName and every matching CALL in all definitions and main body. Assume newName is not already a context key.",
+    "signature": "void renameProgram(CourseSupport.BProgram p,String oldName,String newName)",
+    "difficulty": "Hard",
+    "starter": "import java.util.*;\n\npublic class Solution {\n    public static void renameProgram(CourseSupport.BProgram p,String oldName,String newName) {\n        // TODO: Implement your solution.\n        \n    }\n}\n",
+    "solution": "import java.util.*;\n\npublic class Solution {\n    public static void renameProgram(CourseSupport.BProgram p,String oldName,String newName) {\n        for(CourseSupport.SNode s:p.context.values())rename(s,oldName,newName);\n        rename(p.body,oldName,newName);\n        if(p.context.containsKey(oldName)){CourseSupport.SNode body=p.context.remove(oldName);p.context.put(newName,body);}\n        }\n        private static void rename(CourseSupport.SNode s,String oldName,String newName){if(s.kind.equals(\"CALL\")&&oldName.equals(s.call))s.call=newName;for(CourseSupport.SNode c:s.children)rename(c,oldName,newName);\n    }\n}\n",
+    "tests": [
+      {
+        "name": "defined and called",
+        "code": "@CourseSupport.BProgram p=new CourseSupport.BProgram(\"Bug\");p.context.put(\"Step\",CourseSupport.SNode.block(CourseSupport.SNode.call(\"move\")));p.body=CourseSupport.SNode.block(CourseSupport.SNode.call(\"Step\"));Solution.renameProgram(p,\"Step\",\"Jump\");check(!p.context.containsKey(\"Step\")&&p.context.containsKey(\"Jump\")&&p.body.children.get(0).call.equals(\"Jump\"));"
+      },
+      {
+        "name": "all defs",
+        "code": "@CourseSupport.BProgram p=new CourseSupport.BProgram(\"Bug\");p.context.put(\"A\",CourseSupport.SNode.block(CourseSupport.SNode.call(\"B\")));p.context.put(\"B\",CourseSupport.SNode.block(CourseSupport.SNode.call(\"A\")));Solution.renameProgram(p,\"B\",\"C\");check(p.context.containsKey(\"C\")&&p.context.get(\"A\").children.get(0).call.equals(\"C\"));"
+      }
+    ],
+    "hints": [
+      "Rename the definition key, every definition body, and the main body."
+    ],
+    "source": "HW25 / P07",
+    "explanation": "Remove/reinsert the renamed definition under its new key, traverse the remaining definition bodies, and rename calls in the main body."
+  },
+  {
+    "id": "C048",
+    "title": "Next Word or Separator",
+    "topic": "Tokenizers",
+    "description": "Given text, starting index and separator string, return the longest contiguous substring where every character has the same separator membership as the first character. Based on HW26 and WordCounter.",
+    "signature": "String nextWordOrSeparator(String text,int pos,String separators)",
+    "difficulty": "Medium",
+    "starter": "import java.util.*;\n\npublic class Solution {\n    public static String nextWordOrSeparator(String text,int pos,String separators) {\n        // TODO: Implement your solution.\n        throw new UnsupportedOperationException(\"Not implemented\");\n    }\n}\n",
+    "solution": "import java.util.*;\n\npublic class Solution {\n    public static String nextWordOrSeparator(String text,int pos,String separators) {\n        boolean sep=separators.indexOf(text.charAt(pos))>=0;int end=pos;\n        while(end<text.length()&&(separators.indexOf(text.charAt(end))>=0)==sep)end++;\n        return text.substring(pos,end);\n    }\n}\n",
+    "tests": [
+      {
+        "name": "word",
+        "code": "Solution.nextWordOrSeparator(\"hello  world\",0,\" \").equals(\"hello\")"
+      },
+      {
+        "name": "separator",
+        "code": "Solution.nextWordOrSeparator(\"hello  world\",5,\" \").equals(\"  \")"
+      },
+      {
+        "name": "punctuation",
+        "code": "Solution.nextWordOrSeparator(\"a,,,b\",1,\",\").equals(\",,,\")"
+      },
+      {
+        "name": "last",
+        "code": "Solution.nextWordOrSeparator(\"word\",3,\" \").equals(\"d\")"
+      }
+    ],
+    "hints": [
+      "Remember whether the starting character is a separator."
+    ],
+    "source": "HW26 / P01",
+    "explanation": "Classify the starting character as whitespace or word, then scan a maximal contiguous run of the same type."
+  },
+  {
+    "id": "C049",
+    "title": "Tokenizer with END_OF_INPUT",
+    "topic": "Tokenizers",
+    "description": "Tokenize a String by whitespace only (space, tab, newline, carriage return), discard whitespace and append a literal END_OF_INPUT final token. Based directly on HW26.",
+    "signature": "List<String> tokenize(String src)",
+    "difficulty": "Medium",
+    "starter": "import java.util.*;\n\npublic class Solution {\n    public static List<String> tokenize(String src) {\n        // TODO: Implement your solution.\n        throw new UnsupportedOperationException(\"Not implemented\");\n    }\n}\n",
+    "solution": "import java.util.*;\n\npublic class Solution {\n    public static List<String> tokenize(String src) {\n        ArrayList<String> out=new ArrayList<>();StringBuilder word=new StringBuilder();\n        for(int i=0;i<src.length();i++){\n         char c=src.charAt(i);if(\" \\t\\n\\r\".indexOf(c)>=0){if(word.length()>0){out.add(word.toString());word.setLength(0);}}\n         else word.append(c);\n        }\n        if(word.length()>0)out.add(word.toString());\n        out.add(\"END_OF_INPUT\");return out;\n    }\n}\n",
+    "tests": [
+      {
+        "name": "ordinary",
+        "code": "Solution.tokenize(\"move  turnleft\").equals(Arrays.asList(\"move\",\"turnleft\",\"END_OF_INPUT\"))"
+      },
+      {
+        "name": "empty",
+        "code": "Solution.tokenize(\"  \\n\").equals(Arrays.asList(\"END_OF_INPUT\"))"
+      },
+      {
+        "name": "tabs",
+        "code": "Solution.tokenize(\"a\\tb\\nc\").equals(Arrays.asList(\"a\",\"b\",\"c\",\"END_OF_INPUT\"))"
+      }
+    ],
+    "hints": [
+      "Whitespace is the separator category here; punctuation stays within words.",
+      "Always append END_OF_INPUT once."
+    ],
+    "source": "HW26",
+    "explanation": "Process lines into maximal tokens, keep the non-whitespace ones in order, then append exactly one END_OF_INPUT sentinel."
+  },
+  {
+    "id": "C050",
+    "title": "Recursive Descent Arithmetic",
+    "topic": "Recursive Descent",
+    "description": "Evaluate a valid expression containing nonnegative integers, +,-,*,/, parentheses (int division truncates toward zero) and no whitespace. Mirrors HW28 five-method grammar. Implement by your own parser.",
+    "signature": "int evaluate(String expr)",
+    "difficulty": "Hard",
+    "starter": "import java.util.*;\n\npublic class Solution {\n    public static int evaluate(String expr) {\n        // TODO: Implement your solution.\n        throw new UnsupportedOperationException(\"Not implemented\");\n    }\n}\n",
+    "solution": "import java.util.*;\n\npublic class Solution {\n    public static int evaluate(String expr) {\n        class Parser {int i=0;\n        int expr(){int v=term();while(i<expr.length()&&(expr.charAt(i)=='+'||expr.charAt(i)=='-')){char op=expr.charAt(i++);int x=term();v=op=='+'?v+x:v-x;}return v;}\n        int term(){int v=factor();while(i<expr.length()&&(expr.charAt(i)=='*'||expr.charAt(i)=='/')){char op=expr.charAt(i++);int x=factor();v=op=='*'?v*x:v/x;}return v;}\n        int factor(){if(expr.charAt(i)=='('){i++;int v=expr();i++;return v;}int v=0;while(i<expr.length()&&Character.isDigit(expr.charAt(i)))v=v*10+(expr.charAt(i++)-'0');return v;}\n        }\n        return new Parser().expr();\n    }\n}\n",
+    "tests": [
+      {
+        "name": "precedence",
+        "code": "Solution.evaluate(\"2+3*4\")==14"
+      },
+      {
+        "name": "parentheses",
+        "code": "Solution.evaluate(\"(8-3)*2+5\")==15"
+      },
+      {
+        "name": "left associative",
+        "code": "Solution.evaluate(\"20/2/2\")==5"
+      },
+      {
+        "name": "division truncates",
+        "code": "Solution.evaluate(\"3-8/3\")==1"
+      },
+      {
+        "name": "nested",
+        "code": "Solution.evaluate(\"2*(3+(4*5))\")==46"
+      },
+      {
+        "name": "digits",
+        "code": "Solution.evaluate(\"123\")==123"
+      }
+    ],
+    "hints": [
+      "Break parsing into expr, term and factor for precedence.",
+      "Maintain one source cursor shared by all parser methods."
+    ],
+    "source": "HW28",
+    "explanation": "Implement grammar levels as functions: expr handles +/−, term handles ×/÷, factor handles parentheses, digit-seq reads numbers. Recursion enforces precedence."
+  },
+  {
+    "id": "C051",
+    "title": "Validate Signed Real Constants",
+    "topic": "Grammars",
+    "description": "Return whether a string matches HW27 signed-real-const grammar: optional + or -; decimal digits before dot; fractional digits optional; optional E exponent with optional sign and at least one digit. Requires a dot.",
+    "signature": "boolean signedReal(String s)",
+    "difficulty": "Medium",
+    "starter": "import java.util.*;\n\npublic class Solution {\n    public static boolean signedReal(String s) {\n        // TODO: Implement your solution.\n        throw new UnsupportedOperationException(\"Not implemented\");\n    }\n}\n",
+    "solution": "import java.util.*;\n\npublic class Solution {\n    public static boolean signedReal(String s) {\n        return s.matches(\"[+-]?[0-9]+\\\\.(?:[0-9]+(?:E[+-]?[0-9]+)?|(?:E[+-]?[0-9]+)?)\");\n    }\n}\n",
+    "tests": [
+      {
+        "name": "negative",
+        "code": "Solution.signedReal(\"-3.56\")"
+      },
+      {
+        "name": "exponent",
+        "code": "Solution.signedReal(\"+17.E09\")"
+      },
+      {
+        "name": "fraction",
+        "code": "Solution.signedReal(\"4.95\")"
+      },
+      {
+        "name": "missing dot",
+        "code": "!Solution.signedReal(\"17\")"
+      },
+      {
+        "name": "incomplete exponent",
+        "code": "!Solution.signedReal(\"2.E\")"
+      },
+      {
+        "name": "plain dot",
+        "code": "Solution.signedReal(\"7.\")"
+      }
+    ],
+    "hints": [
+      "The decimal point is mandatory under this specific grammar.",
+      "Exponent starts with uppercase E."
+    ],
+    "source": "HW27",
+    "explanation": "Match the optional leading sign, numeric forms and optional exponent according to the homework grammar. Reject malformed exponent or decimal forms."
+  },
+  {
+    "id": "C052",
+    "title": "Map Buckets with Collisions",
+    "topic": "Hashing",
+    "description": "Create n bucket lists and insert keys into buckets by Math.floorMod(key.hashCode(),n). Return bucket lists in bucket-index order; preserve insertion order within each bucket. Simulates Map4 array-of-buckets representation.",
+    "signature": "List<List<Integer>> bucketize(List<Integer> keys,int capacity)",
+    "difficulty": "Medium",
+    "starter": "import java.util.*;\n\npublic class Solution {\n    public static List<List<Integer>> bucketize(List<Integer> keys,int capacity) {\n        // TODO: Implement your solution.\n        throw new UnsupportedOperationException(\"Not implemented\");\n    }\n}\n",
+    "solution": "import java.util.*;\n\npublic class Solution {\n    public static List<List<Integer>> bucketize(List<Integer> keys,int capacity) {\n        List<List<Integer>> out=new ArrayList<>();for(int i=0;i<capacity;i++)out.add(new ArrayList<>());\n        for(int k:keys)out.get(Math.floorMod(k,capacity)).add(k);\n        return out;\n    }\n}\n",
+    "tests": [
+      {
+        "name": "collisions",
+        "code": "Solution.bucketize(Arrays.asList(1,11,-9),10).get(1).equals(Arrays.asList(1,11,-9))"
+      },
+      {
+        "name": "empty",
+        "code": "Solution.bucketize(Collections.emptyList(),3).equals(Arrays.asList(Collections.emptyList(),Collections.emptyList(),Collections.emptyList()))"
+      }
+    ],
+    "hints": [
+      "All buckets must exist, including empty buckets."
+    ],
+    "source": "P03",
+    "explanation": "Store colliding keys in the same bucket, using key equality for lookups and removal. A collision never means the keys are equal."
+  },
+  {
+    "id": "C053",
+    "title": "Validate Heap and Shape",
+    "topic": "Heapsort",
+    "description": "Given an arbitrary binary tree, return true only if it satisfies BOTH min-heap ordering and complete binary-tree shape. HW17 separates these conditions.",
+    "signature": "boolean isHeap(CourseSupport.Node<Integer> root)",
+    "difficulty": "Medium",
+    "starter": "import java.util.*;\n\npublic class Solution {\n    public static boolean isHeap(CourseSupport.Node<Integer> root) {\n        // TODO: Implement your solution.\n        throw new UnsupportedOperationException(\"Not implemented\");\n    }\n}\n",
+    "solution": "import java.util.*;\n\npublic class Solution {\n    public static boolean isHeap(CourseSupport.Node<Integer> root) {\n        Queue<CourseSupport.Node<Integer>> q=new LinkedList<>();q.add(root);boolean seenGap=false;\n        while(!q.isEmpty()){\n         CourseSupport.Node<Integer> node=q.remove();if(node==null){seenGap=true;continue;}\n         if(seenGap)return false;\n         if(node.left!=null&&node.data>node.left.data)return false;\n         if(node.right!=null&&node.data>node.right.data)return false;\n         q.add(node.left);q.add(node.right);\n        }\n        return true;\n    }\n}\n",
+    "tests": [
+      {
+        "name": "true heap",
+        "code": "Solution.isHeap(CourseSupport.n(1,CourseSupport.n(2,CourseSupport.n(5),null),CourseSupport.n(3)))"
+      },
+      {
+        "name": "not complete",
+        "code": "!Solution.isHeap(CourseSupport.n(1,null,CourseSupport.n(2)))"
+      },
+      {
+        "name": "order broken",
+        "code": "!Solution.isHeap(CourseSupport.n(5,CourseSupport.n(2),CourseSupport.n(9)))"
+      },
+      {
+        "name": "empty",
+        "code": "Solution.isHeap(null)"
+      }
+    ],
+    "hints": [
+      "Combine breadth-first completeness with parent/child order checks."
+    ],
+    "source": "HW17 / P05",
+    "explanation": "Test order and completeness separately. Both must hold for a valid min-heap; local ordering alone is not sufficient."
+  },
+  {
+    "id": "C054",
+    "title": "Summarize Program AST Structure",
+    "topic": "Statement & Program",
+    "description": "Return a Map counting every AST node kind (BLOCK, IF, IF_ELSE, WHILE, CALL) in Program body plus all context definitions. The Program and nodes must be unchanged.",
+    "signature": "Map<String,Integer> kindHistogram(CourseSupport.BProgram p)",
+    "difficulty": "Medium",
+    "starter": "import java.util.*;\n\npublic class Solution {\n    public static Map<String,Integer> kindHistogram(CourseSupport.BProgram p) {\n        // TODO: Implement your solution.\n        throw new UnsupportedOperationException(\"Not implemented\");\n    }\n}\n",
+    "solution": "import java.util.*;\n\npublic class Solution {\n    public static Map<String,Integer> kindHistogram(CourseSupport.BProgram p) {\n        Map<String,Integer> m=new HashMap<>();visit(p.body,m);\n        for(CourseSupport.SNode s:p.context.values())visit(s,m);\n        return m;\n        }\n        private static void visit(CourseSupport.SNode s,Map<String,Integer> m){m.put(s.kind,m.getOrDefault(s.kind,0)+1);for(CourseSupport.SNode c:s.children)visit(c,m);\n    }\n}\n",
+    "tests": [
+      {
+        "name": "simple",
+        "code": "@CourseSupport.BProgram p=new CourseSupport.BProgram(\"A\");p.body=CourseSupport.SNode.block(CourseSupport.SNode.call(\"move\"));check(Solution.kindHistogram(p).equals(Map.of(\"BLOCK\",1,\"CALL\",1)));"
+      },
+      {
+        "name": "context",
+        "code": "@CourseSupport.BProgram p=new CourseSupport.BProgram(\"A\");p.context.put(\"X\",CourseSupport.SNode.block(CourseSupport.SNode.call(\"skip\")));p.body=CourseSupport.SNode.block();check(Solution.kindHistogram(p).equals(Map.of(\"BLOCK\",2,\"CALL\",1)));"
+      }
+    ],
+    "hints": [
+      "Count the node itself, then all descendants."
+    ],
+    "source": "P07",
+    "explanation": "Traverse the Program AST and collect the requested structural summary without mutating the components. Every kind has different child counts."
+  },
+  {
+    "id": "C055",
+    "title": "BST Inorder Traversal",
+    "topic": "Binary Search Trees",
+    "description": "Given a BST, return a sorted ascending List of all its node labels using recursion. Do not modify tree.",
+    "signature": "List<Integer> inorder(CourseSupport.Node<Integer> root)",
+    "difficulty": "Easy",
+    "starter": "import java.util.*;\n\npublic class Solution {\n    public static List<Integer> inorder(CourseSupport.Node<Integer> root) {\n        // TODO: Implement your solution.\n        throw new UnsupportedOperationException(\"Not implemented\");\n    }\n}\n",
+    "solution": "import java.util.*;\n\npublic class Solution {\n    public static List<Integer> inorder(CourseSupport.Node<Integer> root) {\n        ArrayList<Integer> out=new ArrayList<>();walk(root,out);return out;\n        }\n        private static void walk(CourseSupport.Node<Integer> r,List<Integer> out){if(r==null)return;walk(r.left,out);out.add(r.data);walk(r.right,out);\n    }\n}\n",
+    "tests": [
+      {
+        "name": "balanced",
+        "code": "Solution.inorder(CourseSupport.n(5,CourseSupport.n(3),CourseSupport.n(7))).equals(Arrays.asList(3,5,7))"
+      },
+      {
+        "name": "empty",
+        "code": "Solution.inorder(null).isEmpty()"
+      },
+      {
+        "name": "unbalanced",
+        "code": "Solution.inorder(CourseSupport.n(5,null,CourseSupport.n(8,CourseSupport.n(6),null))).equals(Arrays.asList(5,6,8))"
+      }
+    ],
+    "hints": [
+      "Left, root, right gives BST sorted order."
+    ],
+    "source": "HW14 / P04",
+    "explanation": "Inorder traversal visits left, root, right. In a BST this produces values in sorted order (subject to the task’s duplicate convention)."
+  },
+  {
+    "id": "C056",
+    "title": "Rehashing Map Entries",
+    "topic": "Hashing",
+    "description": "Given Map<String,Integer> and bucketCount>0, return Map<Integer,List<String>> of keys grouped by nonnegative bucket index. Include empty buckets, and sort each bucket’s keys for deterministic output.",
+    "signature": "Map<Integer,List<String>> rehash(Map<String,Integer> input,int bucketCount)",
+    "difficulty": "Medium",
+    "starter": "import java.util.*;\n\npublic class Solution {\n    public static Map<Integer,List<String>> rehash(Map<String,Integer> input,int bucketCount) {\n        // TODO: Implement your solution.\n        throw new UnsupportedOperationException(\"Not implemented\");\n    }\n}\n",
+    "solution": "import java.util.*;\n\npublic class Solution {\n    public static Map<Integer,List<String>> rehash(Map<String,Integer> input,int bucketCount) {\n        Map<Integer,List<String>> m=new HashMap<>();for(int i=0;i<bucketCount;i++)m.put(i,new ArrayList<>());\n        for(String key:input.keySet())m.get(Math.floorMod(key.hashCode(),bucketCount)).add(key);\n        for(List<String> keys:m.values())Collections.sort(keys);\n        return m;\n    }\n}\n",
+    "tests": [
+      {
+        "name": "single",
+        "code": "@Map<String,Integer> src=Map.of(\"a\",1);Map<Integer,List<String>> m=Solution.rehash(src,3);check(m.size()==3&&m.get(Math.floorMod(\"a\".hashCode(),3)).equals(Arrays.asList(\"a\")));"
+      },
+      {
+        "name": "empty",
+        "code": "@Map<Integer,List<String>> m=Solution.rehash(Collections.emptyMap(),4);check(m.size()==4&&m.values().stream().allMatch(List::isEmpty));"
+      }
+    ],
+    "hints": [
+      "Every key belongs in exactly one initialized bucket."
+    ],
+    "source": "P03",
+    "explanation": "Allocate the new buckets and redistribute every old entry using the new capacity. Recompute indices; simply copying buckets is incorrect."
+  },
+  {
+    "id": "C057",
+    "title": "Queue Reversal Using a Stack",
+    "topic": "Stacks & Queues",
+    "description": "Reverse ArrayDeque<Integer> in place by using a stack (another Deque). Covers layered queue/stack algorithms from HW06–08.",
+    "signature": "void reverseQueue(ArrayDeque<Integer> q)",
+    "difficulty": "Easy",
+    "starter": "import java.util.*;\n\npublic class Solution {\n    public static void reverseQueue(ArrayDeque<Integer> q) {\n        // TODO: Implement your solution.\n        \n    }\n}\n",
+    "solution": "import java.util.*;\n\npublic class Solution {\n    public static void reverseQueue(ArrayDeque<Integer> q) {\n        ArrayDeque<Integer> stack=new ArrayDeque<>();\n        while(!q.isEmpty())stack.addLast(q.removeFirst());\n        while(!stack.isEmpty())q.addLast(stack.removeLast());\n    }\n}\n",
+    "tests": [
+      {
+        "name": "odd",
+        "code": "@ArrayDeque<Integer>q=new ArrayDeque<>(Arrays.asList(1,2,3));Solution.reverseQueue(q);check(new ArrayList<>(q).equals(Arrays.asList(3,2,1)));"
+      },
+      {
+        "name": "empty",
+        "code": "@ArrayDeque<Integer>q=new ArrayDeque<>();Solution.reverseQueue(q);check(q.isEmpty());"
+      },
+      {
+        "name": "even",
+        "code": "@ArrayDeque<Integer>q=new ArrayDeque<>(Arrays.asList(9,7));Solution.reverseQueue(q);check(new ArrayList<>(q).equals(Arrays.asList(7,9)));"
+      }
+    ],
+    "hints": [
+      "Stack is last-in-first-out; Queue is first-in-first-out."
+    ],
+    "source": "HW06–08",
+    "explanation": "Push dequeued elements onto a stack then pop back into the queue. LIFO reversal yields the reversed FIFO ordering."
+  }
+]

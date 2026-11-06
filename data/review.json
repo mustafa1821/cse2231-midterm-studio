@@ -1,0 +1,2204 @@
+{
+  "multiple_choice": [
+    {
+      "id": "M001",
+      "topic": "Contracts & Mathematical Models",
+      "question": "In a contract, what does #s represent?",
+      "choices": [
+        "The size of s",
+        "The incoming value of s",
+        "The successor of s",
+        "The previous loop iteration"
+      ],
+      "answer": "B",
+      "explanation": "The # prefix denotes the value at method entry.",
+      "source": "HW01–03 / Schedule"
+    },
+    {
+      "id": "M002",
+      "topic": "Contracts & Mathematical Models",
+      "question": "What is the parameter mode @replaces q?",
+      "choices": [
+        "q is unchanged",
+        "q is consumed and empty",
+        "q may be overwritten with a specified outgoing value",
+        "q is read-only"
+      ],
+      "answer": "C",
+      "explanation": "Replaces permits overwriting the old value; the postcondition describes the new value.",
+      "source": "HW01–03 / Schedule"
+    },
+    {
+      "id": "M003",
+      "topic": "Contracts & Mathematical Models",
+      "question": "The mathematical model of a Queue is a…",
+      "choices": [
+        "set",
+        "string/sequence",
+        "partial function",
+        "binary tree"
+      ],
+      "answer": "B",
+      "explanation": "Queue values are sequences; insertion order matters and duplicates are allowed.",
+      "source": "HW01–03 / Schedule"
+    },
+    {
+      "id": "M004",
+      "topic": "Contracts & Mathematical Models",
+      "question": "Which mathematical model fits a Map<K,V>?",
+      "choices": [
+        "a total function",
+        "an unordered set of K-V pairs forming a partial function",
+        "an ordered sequence of keys",
+        "a multiset of values"
+      ],
+      "answer": "B",
+      "explanation": "A Map models a partial function: each key has at most one corresponding value.",
+      "source": "HW01–03 / Schedule"
+    },
+    {
+      "id": "M005",
+      "topic": "Contracts & Mathematical Models",
+      "question": "For a method with @requires |s| >= 1, calling it with an empty s is…",
+      "choices": [
+        "valid and returns null",
+        "a violation of its precondition",
+        "guaranteed to throw IllegalArgumentException",
+        "equivalent to clear"
+      ],
+      "answer": "B",
+      "explanation": "Client must establish requires; behavior otherwise is not specified by the contract.",
+      "source": "HW01–03 / Schedule"
+    },
+    {
+      "id": "M006",
+      "topic": "Contracts & Mathematical Models",
+      "question": "The @clears parameter mode means…",
+      "choices": [
+        "the parameter must be null",
+        "the outgoing parameter has its type’s initial value",
+        "the object is destroyed",
+        "the incoming value is preserved"
+      ],
+      "answer": "B",
+      "explanation": "Clears means the formal parameter is left at its type’s initial value.",
+      "source": "HW01–03 / Schedule"
+    },
+    {
+      "id": "M007",
+      "topic": "Contracts & Mathematical Models",
+      "question": "What does perms(result, #input) express?",
+      "choices": [
+        "They have equal capacity",
+        "They contain the same entries with multiplicities, possibly reordered",
+        "The resulting data is sorted",
+        "The objects have the same identity"
+      ],
+      "answer": "B",
+      "explanation": "Permutation preserves elements including duplicate counts.",
+      "source": "HW01–03 / Schedule"
+    },
+    {
+      "id": "M008",
+      "topic": "Contracts & Mathematical Models",
+      "question": "The contract s1 * s2 means…",
+      "choices": [
+        "multiplication",
+        "set union",
+        "sequence concatenation",
+        "comparison"
+      ],
+      "answer": "C",
+      "explanation": "The star operator is concatenation for string/sequence models.",
+      "source": "HW01–03 / Schedule"
+    },
+    {
+      "id": "M009",
+      "topic": "Sequences, Smooth & Arithmetic",
+      "question": "smooth(<2,4,6>) must produce…",
+      "choices": [
+        "<3,5>",
+        "<2,3,5>",
+        "<2,4,6>",
+        "<4,6>"
+      ],
+      "answer": "A",
+      "explanation": "Adjacent averages: (2+4)/2=3 and (4+6)/2=5.",
+      "source": "HW01–04 / Lab02–03"
+    },
+    {
+      "id": "M010",
+      "topic": "Sequences, Smooth & Arithmetic",
+      "question": "For a one-element input <7>, smooth returns…",
+      "choices": [
+        "<7>",
+        "<0>",
+        "<>",
+        "undefined due to precondition"
+      ],
+      "answer": "C",
+      "explanation": "There are no adjacent pairs, so the output length is |s|-1 = 0.",
+      "source": "HW01–04 / Lab02–03"
+    },
+    {
+      "id": "M011",
+      "topic": "Sequences, Smooth & Arithmetic",
+      "question": "Which test is essential for a correct integer average routine?",
+      "choices": [
+        "Only positive equal numbers",
+        "Only nonzero values",
+        "MIN_VALUE and MAX_VALUE",
+        "Only multiples of two"
+      ],
+      "answer": "C",
+      "explanation": "Extreme values expose overflow; opposite signs expose truncation pitfalls.",
+      "source": "HW01–04 / Lab02–03"
+    },
+    {
+      "id": "M012",
+      "topic": "Sequences, Smooth & Arithmetic",
+      "question": "Why is return (j + k) / 2 unsafe for int average?",
+      "choices": [
+        "Java int does not have /",
+        "The sum can overflow before division",
+        "Addition is not associative",
+        "Division always rounds up"
+      ],
+      "answer": "B",
+      "explanation": "Even when the mathematical average fits int, the intermediate sum may not.",
+      "source": "HW01–04 / Lab02–03"
+    },
+    {
+      "id": "M013",
+      "topic": "Sequences, Smooth & Arithmetic",
+      "question": "The value of -3 / 2 in Java is…",
+      "choices": [
+        "-2",
+        "-1",
+        "1",
+        "2"
+      ],
+      "answer": "B",
+      "explanation": "Java integer division truncates toward zero, not toward minus infinity.",
+      "source": "HW01–04 / Lab02–03"
+    },
+    {
+      "id": "M014",
+      "topic": "Sequences, Smooth & Arithmetic",
+      "question": "A useful boundary-focused JUnit test suite includes…",
+      "choices": [
+        "only ordinary inputs",
+        "only one random case",
+        "empty, singleton, repeated, and extreme inputs where permitted",
+        "only sorted inputs"
+      ],
+      "answer": "C",
+      "explanation": "Test distinct contract partitions, including boundaries and exceptional conditions.",
+      "source": "HW01–04 / Lab02–03"
+    },
+    {
+      "id": "M015",
+      "topic": "Kernel Implementations & Testing",
+      "question": "A kernel method differs from a secondary method because…",
+      "choices": [
+        "kernel methods are always faster",
+        "secondary methods can be implemented by layering on kernel methods",
+        "kernel methods cannot modify objects",
+        "secondary methods are private"
+      ],
+      "answer": "B",
+      "explanation": "A component’s secondary layer is defined in terms of its kernel and standard operations.",
+      "source": "HW05–09 / P01–02"
+    },
+    {
+      "id": "M016",
+      "topic": "Kernel Implementations & Testing",
+      "question": "What establishes an implementation’s representation invariant?",
+      "choices": [
+        "the @convention clause",
+        "the @correspondence clause",
+        "the JUnit class name",
+        "the size method only"
+      ],
+      "answer": "A",
+      "explanation": "Convention specifies legal private-field states.",
+      "source": "HW05–09 / P01–02"
+    },
+    {
+      "id": "M017",
+      "topic": "Kernel Implementations & Testing",
+      "question": "The @correspondence clause describes…",
+      "choices": [
+        "what Java imports are needed",
+        "how the private representation denotes the abstract value",
+        "the object hash code",
+        "which tests to run"
+      ],
+      "answer": "B",
+      "explanation": "Correspondence is the abstraction function from representation to model.",
+      "source": "HW05–09 / P01–02"
+    },
+    {
+      "id": "M018",
+      "topic": "Kernel Implementations & Testing",
+      "question": "In a Queue represented with a Sequence in the same order, dequeue should remove index…",
+      "choices": [
+        "0",
+        "length-1",
+        "length/2",
+        "arbitrary"
+      ],
+      "answer": "A",
+      "explanation": "The abstract front is index 0.",
+      "source": "HW05–09 / P01–02"
+    },
+    {
+      "id": "M019",
+      "topic": "Kernel Implementations & Testing",
+      "question": "The initial value returned by newInstance is…",
+      "choices": [
+        "a deep copy of this",
+        "a new object of the same dynamic type at initial value",
+        "always null",
+        "always a Stack"
+      ],
+      "answer": "B",
+      "explanation": "newInstance constructs the same dynamic type with its initial abstract value.",
+      "source": "HW05–09 / P01–02"
+    },
+    {
+      "id": "M020",
+      "topic": "Kernel Implementations & Testing",
+      "question": "After dest.transferFrom(src), the source is…",
+      "choices": [
+        "a copy of dest",
+        "at its initial value",
+        "undefined/invalid",
+        "unchanged"
+      ],
+      "answer": "B",
+      "explanation": "transferFrom transfers the abstract value and clears the source.",
+      "source": "HW05–09 / P01–02"
+    },
+    {
+      "id": "M021",
+      "topic": "Kernel Implementations & Testing",
+      "question": "What does test-plan partitioning primarily accomplish?",
+      "choices": [
+        "prove no bug exists",
+        "cover behavior categories and boundaries systematically",
+        "avoid assertions",
+        "ensure O(1) time"
+      ],
+      "answer": "B",
+      "explanation": "Specification-based partitions are systematic evidence, not a mathematical proof.",
+      "source": "HW05–09 / P01–02"
+    },
+    {
+      "id": "M022",
+      "topic": "Kernel Implementations & Testing",
+      "question": "When an assert inside add invokes hasKey and fails, what may actually be defective?",
+      "choices": [
+        "only add",
+        "hasKey or add or the test precondition",
+        "only the compiler",
+        "only equals"
+      ],
+      "answer": "B",
+      "explanation": "Kernel methods depend on one another for precondition checks and derived operations.",
+      "source": "HW05–09 / P01–02"
+    },
+    {
+      "id": "M023",
+      "topic": "Stacks, Queues & Layering",
+      "question": "A stack follows…",
+      "choices": [
+        "FIFO",
+        "LIFO",
+        "random removal",
+        "lexical order"
+      ],
+      "answer": "B",
+      "explanation": "Push/pop work at the same top end, last in first out.",
+      "source": "HW06–08 / HW18"
+    },
+    {
+      "id": "M024",
+      "topic": "Stacks, Queues & Layering",
+      "question": "A queue follows…",
+      "choices": [
+        "LIFO",
+        "FIFO",
+        "binary search order",
+        "sorted order"
+      ],
+      "answer": "B",
+      "explanation": "Enqueue goes to rear, dequeue removes front.",
+      "source": "HW06–08 / HW18"
+    },
+    {
+      "id": "M025",
+      "topic": "Stacks, Queues & Layering",
+      "question": "A Sequence implemented with two stacks moves entries to change the cursor by…",
+      "choices": [
+        "swapping stack references only",
+        "popping one and pushing the other",
+        "sorting both stacks",
+        "calling hashCode"
+      ],
+      "answer": "B",
+      "explanation": "Moving the boundary is implemented through stack transfers.",
+      "source": "HW06–08 / HW18"
+    },
+    {
+      "id": "M026",
+      "topic": "Stacks, Queues & Layering",
+      "question": "A queue front secondary method may use dequeue then enqueue and rotation to…",
+      "choices": [
+        "destroy the front",
+        "observe front while restoring logical order",
+        "reverse the queue",
+        "sort the queue"
+      ],
+      "answer": "B",
+      "explanation": "A layered method must preserve the queue’s abstract value.",
+      "source": "HW06–08 / HW18"
+    },
+    {
+      "id": "M027",
+      "topic": "Stacks, Queues & Layering",
+      "question": "In a singly linked Stack with a top pointer, push and pop normally take…",
+      "choices": [
+        "O(1) each",
+        "O(n) each",
+        "O(log n)",
+        "O(n log n)"
+      ],
+      "answer": "A",
+      "explanation": "Both alter only the head reference.",
+      "source": "HW06–08 / HW18"
+    },
+    {
+      "id": "M028",
+      "topic": "Stacks, Queues & Layering",
+      "question": "Which is NOT permitted by Set semantics?",
+      "choices": [
+        "Removing an existing element",
+        "Adding an element not present",
+        "Storing duplicates as distinct set entries",
+        "Testing contains"
+      ],
+      "answer": "C",
+      "explanation": "Sets contain at most one occurrence of each value.",
+      "source": "HW06–08 / HW18"
+    },
+    {
+      "id": "M029",
+      "topic": "P01 WordCounter",
+      "question": "To count words case-insensitively, normalize tokens by…",
+      "choices": [
+        "hashing the full line",
+        "converting tokens to lowercase before Map lookups",
+        "sorting the original file",
+        "removing vowels"
+      ],
+      "answer": "B",
+      "explanation": "Lowercase normalization merges Word and word under one key.",
+      "source": "P01 / WordCounter.zip"
+    },
+    {
+      "id": "M030",
+      "topic": "P01 WordCounter",
+      "question": "The WordCounter map associates…",
+      "choices": [
+        "file offsets with characters",
+        "word strings with integer counts",
+        "word count with filename",
+        "HTML tags with booleans"
+      ],
+      "answer": "B",
+      "explanation": "Map<String,Integer> represents frequencies.",
+      "source": "P01 / WordCounter.zip"
+    },
+    {
+      "id": "M031",
+      "topic": "P01 WordCounter",
+      "question": "Why copy map keys into a Queue before producing alphabetical HTML rows?",
+      "choices": [
+        "Map iteration order is guaranteed alphabetical",
+        "Queue.sort can order the words explicitly",
+        "Maps are immutable",
+        "Sorting HTML is impossible"
+      ],
+      "answer": "B",
+      "explanation": "Map iteration is not necessarily sorted; sorting the Queue provides display order.",
+      "source": "P01 / WordCounter.zip"
+    },
+    {
+      "id": "M032",
+      "topic": "P01 WordCounter",
+      "question": "Which token should a word-counter skip?",
+      "choices": [
+        "“hello”",
+        "“World”",
+        "“   ”",
+        "“software”"
+      ],
+      "answer": "C",
+      "explanation": "A separator-only token should not be counted as a word.",
+      "source": "P01 / WordCounter.zip"
+    },
+    {
+      "id": "M033",
+      "topic": "P01 WordCounter",
+      "question": "A bug if HTML output directly inserts raw user tokens without escaping is…",
+      "choices": [
+        "guaranteed compilation failure",
+        "the HTML can be malformed or interpret markup",
+        "counts become negative",
+        "sorting becomes quadratic"
+      ],
+      "answer": "B",
+      "explanation": "Characters such as < and & need HTML escaping for safe valid output.",
+      "source": "P01 / WordCounter.zip"
+    },
+    {
+      "id": "M034",
+      "topic": "P02 NaturalNumber on String",
+      "question": "In your uploaded NaturalNumber3 representation, zero is stored as…",
+      "choices": [
+        "\"0\"",
+        "\"\"",
+        "null",
+        "\"00\""
+      ],
+      "answer": "B",
+      "explanation": "The convention forbids leading zeroes and correspondence uses empty string for 0.",
+      "source": "P02 / NaturalNumberOnString.zip"
+    },
+    {
+      "id": "M035",
+      "topic": "P02 NaturalNumber on String",
+      "question": "multiplyBy10(k) on a nonzero string representation should…",
+      "choices": [
+        "prepend k",
+        "append digit k",
+        "sort digits",
+        "parse into int first"
+      ],
+      "answer": "B",
+      "explanation": "Decimal multiply-by-ten plus digit k appends a base-10 digit.",
+      "source": "P02 / NaturalNumberOnString.zip"
+    },
+    {
+      "id": "M036",
+      "topic": "P02 NaturalNumber on String",
+      "question": "divideBy10() must return…",
+      "choices": [
+        "the first digit",
+        "the final digit as integer",
+        "the new length",
+        "the tens digit"
+      ],
+      "answer": "B",
+      "explanation": "It removes and returns the rightmost digit.",
+      "source": "P02 / NaturalNumberOnString.zip"
+    },
+    {
+      "id": "M037",
+      "topic": "P02 NaturalNumber on String",
+      "question": "Why should zero.multiplyBy10(0) leave an empty representation?",
+      "choices": [
+        "to preserve the zero convention",
+        "because append is forbidden in Java",
+        "to avoid NullPointerException",
+        "because RADIX is 0"
+      ],
+      "answer": "A",
+      "explanation": "Zero is represented by the empty string; \"0\" would violate canonical form.",
+      "source": "P02 / NaturalNumberOnString.zip"
+    },
+    {
+      "id": "M038",
+      "topic": "P02 NaturalNumber on String",
+      "question": "Which is the required effect of transferFrom on the source?",
+      "choices": [
+        "source unchanged",
+        "source reset to initial zero",
+        "source doubles",
+        "source loses its type"
+      ],
+      "answer": "B",
+      "explanation": "The destination adopts the value; the source returns to zero representation.",
+      "source": "P02 / NaturalNumberOnString.zip"
+    },
+    {
+      "id": "M039",
+      "topic": "Hashing & Map4",
+      "question": "To convert a possibly negative hash to a bucket in [0,n), use…",
+      "choices": [
+        "hash % n only",
+        "Math.floorMod(hash,n) or adjusted remainder",
+        "hash / n",
+        "Math.abs(hash) always"
+      ],
+      "answer": "B",
+      "explanation": "Java % can be negative; floorMod or conditional adjustment gives valid range, even MIN_VALUE.",
+      "source": "HW09–11 / P03 / Map4.java"
+    },
+    {
+      "id": "M040",
+      "topic": "Hashing & Map4",
+      "question": "A hash collision occurs when…",
+      "choices": [
+        "two equal keys have different values",
+        "distinct keys map to the same bucket",
+        "a Map is empty",
+        "hashCode returns a String"
+      ],
+      "answer": "B",
+      "explanation": "A hash index can be shared by distinct keys; bucket structure handles collisions.",
+      "source": "HW09–11 / P03 / Map4.java"
+    },
+    {
+      "id": "M041",
+      "topic": "Hashing & Map4",
+      "question": "Map4’s representation is primarily…",
+      "choices": [
+        "an array of Map buckets",
+        "a linked list of Stack objects",
+        "one giant sorted array",
+        "a binary heap"
+      ],
+      "answer": "A",
+      "explanation": "The uploaded Map4 uses Map<K,V>[] hashTable and size.",
+      "source": "HW09–11 / P03 / Map4.java"
+    },
+    {
+      "id": "M042",
+      "topic": "Hashing & Map4",
+      "question": "Why initialize every Map4 bucket in createNewRep?",
+      "choices": [
+        "null buckets are valid maps",
+        "to preserve the non-null bucket invariant",
+        "to make length negative",
+        "to forbid collisions"
+      ],
+      "answer": "B",
+      "explanation": "Each bucket must be an actual Map before delegation.",
+      "source": "HW09–11 / P03 / Map4.java"
+    },
+    {
+      "id": "M043",
+      "topic": "Hashing & Map4",
+      "question": "In Map4 removeAny, the algorithm first…",
+      "choices": [
+        "finds any nonempty bucket",
+        "sorts all keys",
+        "hashes a missing key",
+        "clears the table"
+      ],
+      "answer": "A",
+      "explanation": "It scans for a bucket with entries then removes one pair.",
+      "source": "HW09–11 / P03 / Map4.java"
+    },
+    {
+      "id": "M044",
+      "topic": "Hashing & Map4",
+      "question": "What is the major reason to choose a prime number of buckets?",
+      "choices": [
+        "primes guarantee no collisions",
+        "primes may reduce patterned collisions with some hash distributions",
+        "primes make modulo free",
+        "primes guarantee O(1) worst case"
+      ],
+      "answer": "B",
+      "explanation": "Prime sizes can improve distribution for some hash functions but guarantee neither collision freedom nor O(1) worst case.",
+      "source": "HW09–11 / P03 / Map4.java"
+    },
+    {
+      "id": "M045",
+      "topic": "Hashing & Map4",
+      "question": "Given Java remainder -7 % 5 = -2, mathematical mod(-7,5) is…",
+      "choices": [
+        "-2",
+        "2",
+        "3",
+        "7"
+      ],
+      "answer": "C",
+      "explanation": "Adjust -2 by +5 to get 3.",
+      "source": "HW09–11 / P03 / Map4.java"
+    },
+    {
+      "id": "M046",
+      "topic": "Hashing & Map4",
+      "question": "For a Map bucket index, what property must equal keys have?",
+      "choices": [
+        "different hash codes",
+        "equal hash codes",
+        "different bucket indexes",
+        "same value object"
+      ],
+      "answer": "B",
+      "explanation": "Java equality/hashCode contract demands equal objects have equal hashCodes.",
+      "source": "HW09–11 / P03 / Map4.java"
+    },
+    {
+      "id": "M047",
+      "topic": "Trees & Recursive Traversal",
+      "question": "A BinaryTree node has at most…",
+      "choices": [
+        "one child",
+        "two children",
+        "three children",
+        "arbitrarily many children"
+      ],
+      "answer": "B",
+      "explanation": "Binary trees have left and right subtrees.",
+      "source": "HW12–13 / HW21"
+    },
+    {
+      "id": "M048",
+      "topic": "Trees & Recursive Traversal",
+      "question": "The size of a nonempty tree recursively equals…",
+      "choices": [
+        "1 + sum of child sizes",
+        "1 + maximum child size",
+        "height squared",
+        "two times the root"
+      ],
+      "answer": "A",
+      "explanation": "Count root once and recursively count each child.",
+      "source": "HW12–13 / HW21"
+    },
+    {
+      "id": "M049",
+      "topic": "Trees & Recursive Traversal",
+      "question": "The height of a nonempty general Tree using the HW21 convention is…",
+      "choices": [
+        "number of leaves",
+        "1 + maximum child height",
+        "sum of all child heights",
+        "size / 2"
+      ],
+      "answer": "B",
+      "explanation": "The root contributes a level; the tallest child determines total height.",
+      "source": "HW12–13 / HW21"
+    },
+    {
+      "id": "M050",
+      "topic": "Trees & Recursive Traversal",
+      "question": "For a BinaryTree recursive method using disassemble, what must happen before returning?",
+      "choices": [
+        "leave the tree empty",
+        "assemble the same root and children back",
+        "append child labels to root",
+        "call clear"
+      ],
+      "answer": "B",
+      "explanation": "Unless the contract updates the tree, restoration is necessary.",
+      "source": "HW12–13 / HW21"
+    },
+    {
+      "id": "M051",
+      "topic": "Trees & Recursive Traversal",
+      "question": "Prefix tree representation for an empty BinaryTree is…",
+      "choices": [
+        "null",
+        "<>",
+        "()",
+        "{}"
+      ],
+      "answer": "C",
+      "explanation": "HW13 uses () for the empty tree.",
+      "source": "HW12–13 / HW21"
+    },
+    {
+      "id": "M052",
+      "topic": "Trees & Recursive Traversal",
+      "question": "A leaf with label a has the specified prefix representation…",
+      "choices": [
+        "a",
+        "a(()())",
+        "(a)",
+        "a()"
+      ],
+      "answer": "B",
+      "explanation": "A nonempty tree: root + (left + right); both subtrees empty.",
+      "source": "HW12–13 / HW21"
+    },
+    {
+      "id": "M053",
+      "topic": "Trees & Recursive Traversal",
+      "question": "Which recursion avoids exploring an entire BST for a single search key?",
+      "choices": [
+        "search both children unconditionally",
+        "search only subtree selected by root comparison",
+        "always go right",
+        "only inspect leaves"
+      ],
+      "answer": "B",
+      "explanation": "BST ordering directs search to at most one child at each step.",
+      "source": "HW12–13 / HW21"
+    },
+    {
+      "id": "M054",
+      "topic": "Binary Search Trees & P04",
+      "question": "In a BST without duplicates, left subtree values are…",
+      "choices": [
+        "less than the root",
+        "greater than the root",
+        "all equal to root",
+        "unordered"
+      ],
+      "answer": "A",
+      "explanation": "Unique-key BST invariant places smaller labels to the left.",
+      "source": "HW14 / P04"
+    },
+    {
+      "id": "M055",
+      "topic": "Binary Search Trees & P04",
+      "question": "To find the inorder successor of a node with a right subtree, take…",
+      "choices": [
+        "largest node of right subtree",
+        "smallest node of right subtree",
+        "left child only",
+        "root of entire tree"
+      ],
+      "answer": "B",
+      "explanation": "Leftmost node of right subtree is the next larger label.",
+      "source": "HW14 / P04"
+    },
+    {
+      "id": "M056",
+      "topic": "Binary Search Trees & P04",
+      "question": "A degenerate unbalanced BST has worst-case search time…",
+      "choices": [
+        "O(1)",
+        "O(log n)",
+        "O(n)",
+        "O(n log n)"
+      ],
+      "answer": "C",
+      "explanation": "In a chain-shaped BST, search may visit every node.",
+      "source": "HW14 / P04"
+    },
+    {
+      "id": "M057",
+      "topic": "Binary Search Trees & P04",
+      "question": "Inserting 50,30,70,20 into an empty unique-key BST makes 20…",
+      "choices": [
+        "root",
+        "left child of 30",
+        "right child of 70",
+        "right child of 30"
+      ],
+      "answer": "B",
+      "explanation": "20<50 and 20<30.",
+      "source": "HW14 / P04"
+    },
+    {
+      "id": "M058",
+      "topic": "Binary Search Trees & P04",
+      "question": "P04 Set-on-BST implements Set membership by…",
+      "choices": [
+        "linear scanning all nodes",
+        "following comparisons through BST branches",
+        "hashing into a queue",
+        "sorting each query"
+      ],
+      "answer": "B",
+      "explanation": "Ordered BST labels let membership follow one branch per node.",
+      "source": "HW14 / P04"
+    },
+    {
+      "id": "M059",
+      "topic": "Binary Search Trees & P04",
+      "question": "Which method removes the replacement when deleting a BST node with two children?",
+      "choices": [
+        "removeSmallest(right subtree)",
+        "enqueue(root)",
+        "heapify(tree)",
+        "removeAny() on unrelated set"
+      ],
+      "answer": "A",
+      "explanation": "Use the minimum from the right subtree, preserving BST order.",
+      "source": "HW14 / P04"
+    },
+    {
+      "id": "M060",
+      "topic": "Sorting & Comparators",
+      "question": "The contract IS_TOTAL_PREORDER for sorting relies on…",
+      "choices": [
+        "a comparator defining reflexive, transitive, total ordering relation",
+        "random order",
+        "set uniqueness",
+        "hashCode order"
+      ],
+      "answer": "A",
+      "explanation": "A total preorder gives a coherent comparison relation.",
+      "source": "HW15–16 / Lab11–12"
+    },
+    {
+      "id": "M061",
+      "topic": "Sorting & Comparators",
+      "question": "Insertion sort repeatedly…",
+      "choices": [
+        "partitions around pivots",
+        "inserts each extracted element into a sorted prefix/queue",
+        "heapifies only once",
+        "compares all pairs in parallel"
+      ],
+      "answer": "B",
+      "explanation": "It grows a sorted collection one element at a time.",
+      "source": "HW15–16 / Lab11–12"
+    },
+    {
+      "id": "M062",
+      "topic": "Sorting & Comparators",
+      "question": "In insertion sort on a Queue, insertInOrder must preserve…",
+      "choices": [
+        "only length",
+        "sorted order and permutation",
+        "the original front unchanged",
+        "every index value"
+      ],
+      "answer": "B",
+      "explanation": "The resulting queue is sorted and contains all old entries plus the inserted one.",
+      "source": "HW15–16 / Lab11–12"
+    },
+    {
+      "id": "M063",
+      "topic": "Sorting & Comparators",
+      "question": "Quicksort partitions entries relative to…",
+      "choices": [
+        "the queue size",
+        "a chosen pivot",
+        "the last hash bucket",
+        "tree height"
+      ],
+      "answer": "B",
+      "explanation": "Entries no larger than pivot go in front; larger go in back.",
+      "source": "HW15–16 / Lab11–12"
+    },
+    {
+      "id": "M064",
+      "topic": "Sorting & Comparators",
+      "question": "Quicksort’s average and worst time complexities are…",
+      "choices": [
+        "O(n), O(n)",
+        "O(n log n), O(n²)",
+        "O(log n), O(n)",
+        "O(n²), O(n log n)"
+      ],
+      "answer": "B",
+      "explanation": "Balanced pivots give n log n; very skewed partitions can yield quadratic time.",
+      "source": "HW15–16 / Lab11–12"
+    },
+    {
+      "id": "M065",
+      "topic": "Sorting & Comparators",
+      "question": "If compare(a,b) returns a negative number, that convention means…",
+      "choices": [
+        "a comes before b",
+        "a is greater than b",
+        "a and b are equal",
+        "comparison failed"
+      ],
+      "answer": "A",
+      "explanation": "The Comparator contract returns a negative result when a precedes b.",
+      "source": "HW15–16 / Lab11–12"
+    },
+    {
+      "id": "M066",
+      "topic": "Sorting & Comparators",
+      "question": "A reversed comparator for descending ints can use…",
+      "choices": [
+        "a.compareTo(b)",
+        "b.compareTo(a)",
+        "a.hashCode()",
+        "Math.abs(a-b)"
+      ],
+      "answer": "B",
+      "explanation": "Comparing the arguments in reverse flips the order safely.",
+      "source": "HW15–16 / Lab11–12"
+    },
+    {
+      "id": "M067",
+      "topic": "Heaps, Heapsort & P05",
+      "question": "A min-heap combines…",
+      "choices": [
+        "BST ordering and sorted leaves",
+        "complete-tree shape and parent≤child ordering",
+        "hashing and equality",
+        "stack and queue modes"
+      ],
+      "answer": "B",
+      "explanation": "Heap definition requires complete shape and local order.",
+      "source": "HW17 / P05 / Practice MT2"
+    },
+    {
+      "id": "M068",
+      "topic": "Heaps, Heapsort & P05",
+      "question": "Where must a minimum occur in a nonempty min-heap?",
+      "choices": [
+        "the root",
+        "the rightmost leaf",
+        "any interior node except root",
+        "last array position"
+      ],
+      "answer": "A",
+      "explanation": "Every parent ≤ descendant implies root is minimum.",
+      "source": "HW17 / P05 / Practice MT2"
+    },
+    {
+      "id": "M069",
+      "topic": "Heaps, Heapsort & P05",
+      "question": "A maximum in a min-heap is guaranteed to appear at least once…",
+      "choices": [
+        "at the root",
+        "at a leaf",
+        "at the left child of root",
+        "at array index 1"
+      ],
+      "answer": "B",
+      "explanation": "A greatest interior value must persist down to a leaf if duplicates exist.",
+      "source": "HW17 / P05 / Practice MT2"
+    },
+    {
+      "id": "M070",
+      "topic": "Heaps, Heapsort & P05",
+      "question": "When sifting down a too-large node, swap with…",
+      "choices": [
+        "larger child",
+        "smaller child",
+        "always left child",
+        "always right child"
+      ],
+      "answer": "B",
+      "explanation": "The smallest child should move upward to satisfy parent≤both children.",
+      "source": "HW17 / P05 / Practice MT2"
+    },
+    {
+      "id": "M071",
+      "topic": "Heaps, Heapsort & P05",
+      "question": "For a 0-based heap array, left and right children of i are…",
+      "choices": [
+        "i-1 and i+1",
+        "2i+1 and 2i+2",
+        "2i and 2i+1",
+        "i/2 and i+1"
+      ],
+      "answer": "B",
+      "explanation": "Array level order indexes children at 2i+1 and 2i+2.",
+      "source": "HW17 / P05 / Practice MT2"
+    },
+    {
+      "id": "M072",
+      "topic": "Heaps, Heapsort & P05",
+      "question": "Building a heap bottom-up by heapify takes…",
+      "choices": [
+        "O(n)",
+        "O(n log n) always",
+        "O(log n)",
+        "O(n²)"
+      ],
+      "answer": "A",
+      "explanation": "The total work over nodes by height is linear.",
+      "source": "HW17 / P05 / Practice MT2"
+    },
+    {
+      "id": "M073",
+      "topic": "Heaps, Heapsort & P05",
+      "question": "SortingMachine in insertion mode permits…",
+      "choices": [
+        "removeFirst only",
+        "add; extraction has not begun",
+        "removeFirst and add interleaved",
+        "sorting only strings"
+      ],
+      "answer": "B",
+      "explanation": "Add before switching; removeFirst after changing to extraction mode.",
+      "source": "HW17 / P05 / Practice MT2"
+    },
+    {
+      "id": "M074",
+      "topic": "Heaps, Heapsort & P05",
+      "question": "SortingMachine contents abstractly form a…",
+      "choices": [
+        "set with no duplicates",
+        "multiset allowing duplicates",
+        "map of index to value",
+        "linked list only"
+      ],
+      "answer": "B",
+      "explanation": "Ordering is distinct from multiplicity; duplicates remain.",
+      "source": "HW17 / P05 / Practice MT2"
+    },
+    {
+      "id": "M075",
+      "topic": "Linked Lists, Iterators & P06",
+      "question": "Random access to an index in a singly linked list typically takes…",
+      "choices": [
+        "O(1)",
+        "O(n)",
+        "O(log n)",
+        "O(n log n)"
+      ],
+      "answer": "B",
+      "explanation": "Need to follow references from a known starting node.",
+      "source": "HW18–19 / P06 / Practice MT2"
+    },
+    {
+      "id": "M076",
+      "topic": "Linked Lists, Iterators & P06",
+      "question": "What is the purpose of smart/sentinel nodes?",
+      "choices": [
+        "hold default user data",
+        "avoid special cases at boundaries",
+        "keep values sorted",
+        "prevent garbage collection"
+      ],
+      "answer": "B",
+      "explanation": "Sentinels simplify updates at empty/head/tail boundaries.",
+      "source": "HW18–19 / P06 / Practice MT2"
+    },
+    {
+      "id": "M077",
+      "topic": "Linked Lists, Iterators & P06",
+      "question": "A doubly linked node ordinarily stores…",
+      "choices": [
+        "data, next, prev",
+        "data only",
+        "hash, index",
+        "left, right, parent only"
+      ],
+      "answer": "A",
+      "explanation": "Next and prev allow constant-time local insertion and removal.",
+      "source": "HW18–19 / P06 / Practice MT2"
+    },
+    {
+      "id": "M078",
+      "topic": "Linked Lists, Iterators & P06",
+      "question": "For a linked implementation of List, advance moves the cursor…",
+      "choices": [
+        "one place from right to left",
+        "one place from left to right",
+        "to end immediately",
+        "to start immediately"
+      ],
+      "answer": "B",
+      "explanation": "List is a pair (left,right); advance transfers rightFront to end of left.",
+      "source": "HW18–19 / P06 / Practice MT2"
+    },
+    {
+      "id": "M079",
+      "topic": "Linked Lists, Iterators & P06",
+      "question": "List’s abstract mathematical model is…",
+      "choices": [
+        "(left sequence, right sequence)",
+        "a set",
+        "a map",
+        "a binary search tree"
+      ],
+      "answer": "A",
+      "explanation": "A List has a cursor dividing left and right strings.",
+      "source": "HW18–19 / P06 / Practice MT2"
+    },
+    {
+      "id": "M080",
+      "topic": "Linked Lists, Iterators & P06",
+      "question": "retreat requires…",
+      "choices": [
+        "right nonempty",
+        "left nonempty",
+        "both partitions empty",
+        "sorted entries"
+      ],
+      "answer": "B",
+      "explanation": "There must be an element before the cursor to move back.",
+      "source": "HW18–19 / P06 / Practice MT2"
+    },
+    {
+      "id": "M081",
+      "topic": "Linked Lists, Iterators & P06",
+      "question": "P06 uses a doubly-linked representation primarily to make retreat…",
+      "choices": [
+        "O(n)",
+        "O(log n)",
+        "O(1)",
+        "undefined"
+      ],
+      "answer": "C",
+      "explanation": "A prev pointer allows constant-time one-node movement.",
+      "source": "HW18–19 / P06 / Practice MT2"
+    },
+    {
+      "id": "M082",
+      "topic": "Linked Lists, Iterators & P06",
+      "question": "An iterator’s hasNext() should…",
+      "choices": [
+        "remove the next entry",
+        "report whether unseen entries remain",
+        "always return true",
+        "sort the remaining nodes"
+      ],
+      "answer": "B",
+      "explanation": "hasNext only checks availability; next obtains the next element.",
+      "source": "HW18–19 / P06 / Practice MT2"
+    },
+    {
+      "id": "M083",
+      "topic": "Linked Lists, Iterators & P06",
+      "question": "The practice Queue3 stores nodes in reverse; abstract front is adjacent to…",
+      "choices": [
+        "preFront",
+        "postRear",
+        "middle node",
+        "null"
+      ],
+      "answer": "B",
+      "explanation": "The correspondence reads nodes backward starting at postRear.prev.",
+      "source": "HW18–19 / P06 / Practice MT2"
+    },
+    {
+      "id": "M084",
+      "topic": "BugsWorld & BL Programs",
+      "question": "In BL, a WHILE statement body is represented in the AST as…",
+      "choices": [
+        "one BLOCK child",
+        "two CALL children",
+        "no children",
+        "a Map"
+      ],
+      "answer": "A",
+      "explanation": "WHILE has one BLOCK body child.",
+      "source": "HW20 / P07"
+    },
+    {
+      "id": "M085",
+      "topic": "BugsWorld & BL Programs",
+      "question": "What is the main role of a BL compiler?",
+      "choices": [
+        "execute bugs directly in Java",
+        "translate source into representation/object code",
+        "generate random test inputs",
+        "count words"
+      ],
+      "answer": "B",
+      "explanation": "It translates source instructions into a compiled form for the VM client.",
+      "source": "HW20 / P07"
+    },
+    {
+      "id": "M086",
+      "topic": "BugsWorld & BL Programs",
+      "question": "A BL custom instruction is declared under…",
+      "choices": [
+        "INSTRUCTION name IS ... END name",
+        "FOR EACH name",
+        "CLASS name",
+        "private static void"
+      ],
+      "answer": "A",
+      "explanation": "A user-defined instruction has a named declaration and body.",
+      "source": "HW20 / P07"
+    },
+    {
+      "id": "M087",
+      "topic": "BugsWorld & BL Programs",
+      "question": "The token next-is-enemy is used as…",
+      "choices": [
+        "a condition",
+        "a custom instruction name only",
+        "a Java string literal",
+        "an array index"
+      ],
+      "answer": "A",
+      "explanation": "It tests the state of the cell immediately ahead.",
+      "source": "HW20 / P07"
+    },
+    {
+      "id": "M088",
+      "topic": "Statement ASTs & Recursion",
+      "question": "A newly constructed Statement is…",
+      "choices": [
+        "CALL skip",
+        "empty BLOCK",
+        "IF true",
+        "null"
+      ],
+      "answer": "B",
+      "explanation": "Initial Statement is an empty BLOCK with zero children.",
+      "source": "HW22–24 / P07 / Practice MT2"
+    },
+    {
+      "id": "M089",
+      "topic": "Statement ASTs & Recursion",
+      "question": "Which Statement kind has two BLOCK children?",
+      "choices": [
+        "CALL",
+        "WHILE",
+        "IF_ELSE",
+        "IF"
+      ],
+      "answer": "C",
+      "explanation": "IF_ELSE has thenBody and elseBody.",
+      "source": "HW22–24 / P07 / Practice MT2"
+    },
+    {
+      "id": "M090",
+      "topic": "Statement ASTs & Recursion",
+      "question": "A CALL leaf stores…",
+      "choices": [
+        "instruction name",
+        "a condition and three children",
+        "a Map of programs",
+        "a heap array"
+      ],
+      "answer": "A",
+      "explanation": "CALL is labeled by an instruction identifier and has no children.",
+      "source": "HW22–24 / P07 / Practice MT2"
+    },
+    {
+      "id": "M091",
+      "topic": "Statement ASTs & Recursion",
+      "question": "After s3.addToBlock(0,s1), what happens to s1?",
+      "choices": [
+        "it is duplicated",
+        "it becomes an empty BLOCK",
+        "it becomes null",
+        "s3 becomes empty"
+      ],
+      "answer": "B",
+      "explanation": "The child statement is transferred, and its variable is cleared.",
+      "source": "HW22–24 / P07 / Practice MT2"
+    },
+    {
+      "id": "M092",
+      "topic": "Statement ASTs & Recursion",
+      "question": "For an IF statement, disassembleIf(body) returns…",
+      "choices": [
+        "a Statement name",
+        "a Condition while storing its BLOCK body in body",
+        "the entire Program",
+        "a boolean execution result"
+      ],
+      "answer": "B",
+      "explanation": "The condition is returned and body is transferred out.",
+      "source": "HW22–24 / P07 / Practice MT2"
+    },
+    {
+      "id": "M093",
+      "topic": "Statement ASTs & Recursion",
+      "question": "The correct case for counting primitive CALL occurrences is…",
+      "choices": [
+        "increment for each BLOCK",
+        "increment for each primitive CALL only",
+        "increment for all CALLs including custom",
+        "always return zero"
+      ],
+      "answer": "B",
+      "explanation": "Classify calls using the built-in instruction set.",
+      "source": "HW22–24 / P07 / Practice MT2"
+    },
+    {
+      "id": "M094",
+      "topic": "Statement ASTs & Recursion",
+      "question": "In recursive prettyPrint, indentation should increase…",
+      "choices": [
+        "when entering a nested body BLOCK",
+        "when printing every CALL",
+        "once per character",
+        "only after ELSE ends"
+      ],
+      "answer": "A",
+      "explanation": "Nested body statements use offset+INDENT_SIZE.",
+      "source": "HW22–24 / P07 / Practice MT2"
+    },
+    {
+      "id": "M095",
+      "topic": "Statement ASTs & Recursion",
+      "question": "Why reassemble after recursive disassembly in read-only analyses?",
+      "choices": [
+        "to satisfy restoration and avoid altering input",
+        "to sort statements",
+        "to keep the object empty",
+        "to avoid recursion"
+      ],
+      "answer": "A",
+      "explanation": "The method should preserve the incoming abstract value.",
+      "source": "HW22–24 / P07 / Practice MT2"
+    },
+    {
+      "id": "M096",
+      "topic": "Statement ASTs & Recursion",
+      "question": "For renameInstruction, which leaf type changes?",
+      "choices": [
+        "BLOCK",
+        "CALL matching oldName",
+        "WHILE condition",
+        "IF condition"
+      ],
+      "answer": "B",
+      "explanation": "Only CALL names matching oldName are replaced.",
+      "source": "HW22–24 / P07 / Practice MT2"
+    },
+    {
+      "id": "M097",
+      "topic": "Program Kernels & Refactoring",
+      "question": "Program2 represents a Program with…",
+      "choices": [
+        "name String, context Map, body Statement",
+        "only a Statement",
+        "a heap of tokens",
+        "only an array"
+      ],
+      "answer": "A",
+      "explanation": "The uploaded implementation uses these three fields.",
+      "source": "HW23,25 / P07 / Program2.java"
+    },
+    {
+      "id": "M098",
+      "topic": "Program Kernels & Refactoring",
+      "question": "A Program context stores…",
+      "choices": [
+        "primitive instructions only",
+        "user-defined instruction names mapped to Statement bodies",
+        "Java exception handlers",
+        "token positions"
+      ],
+      "answer": "B",
+      "explanation": "Context is a Map<String,Statement> of definitions.",
+      "source": "HW23,25 / P07 / Program2.java"
+    },
+    {
+      "id": "M099",
+      "topic": "Program Kernels & Refactoring",
+      "question": "Program body’s kind must be…",
+      "choices": [
+        "CALL",
+        "BLOCK",
+        "WHILE",
+        "IF"
+      ],
+      "answer": "B",
+      "explanation": "The Program convention requires its body to be a BLOCK.",
+      "source": "HW23,25 / P07 / Program2.java"
+    },
+    {
+      "id": "M100",
+      "topic": "Program Kernels & Refactoring",
+      "question": "swapContext(context) is used to…",
+      "choices": [
+        "rename a variable without effects",
+        "exchange the Program context with the argument Map",
+        "remove a single key",
+        "return Program name"
+      ],
+      "answer": "B",
+      "explanation": "Swapping moves abstract context values between objects.",
+      "source": "HW23,25 / P07 / Program2.java"
+    },
+    {
+      "id": "M101",
+      "topic": "Program Kernels & Refactoring",
+      "question": "A Program-wide rename must update…",
+      "choices": [
+        "only main body calls",
+        "only the context key",
+        "definition key plus all corresponding CALL occurrences",
+        "all condition enums"
+      ],
+      "answer": "C",
+      "explanation": "A definition rename changes context domain and calls in definitions and body.",
+      "source": "HW23,25 / P07 / Program2.java"
+    },
+    {
+      "id": "M102",
+      "topic": "Program Kernels & Refactoring",
+      "question": "To count skips in a Program, recurse over…",
+      "choices": [
+        "just name String",
+        "every context Statement and the main body",
+        "only main body",
+        "only Map keys"
+      ],
+      "answer": "B",
+      "explanation": "Both named instruction definitions and main body contain CALLs.",
+      "source": "HW23,25 / P07 / Program2.java"
+    },
+    {
+      "id": "M103",
+      "topic": "Grammars, Tokenizer & Recursive Descent",
+      "question": "A terminal in a context-free grammar is…",
+      "choices": [
+        "an expandable variable",
+        "a literal token appearing in generated strings",
+        "a Java object",
+        "a recursive method"
+      ],
+      "answer": "B",
+      "explanation": "Only nonterminals appear as LHS production symbols; terminals are emitted.",
+      "source": "HW26–28 / Lab20–21"
+    },
+    {
+      "id": "M104",
+      "topic": "Grammars, Tokenizer & Recursive Descent",
+      "question": "The grammar actionlist → action | action actionlist permits…",
+      "choices": [
+        "zero actions only",
+        "one or more actions",
+        "exactly two actions",
+        "exactly zero or two"
+      ],
+      "answer": "B",
+      "explanation": "The base action produces one; recursion extends to arbitrarily many.",
+      "source": "HW26–28 / Lab20–21"
+    },
+    {
+      "id": "M105",
+      "topic": "Grammars, Tokenizer & Recursive Descent",
+      "question": "A maximal token from nextWordOrSeparator continues while…",
+      "choices": [
+        "characters remain in the same separator/nonseparator class",
+        "characters are digits only",
+        "characters match first word",
+        "a newline is encountered"
+      ],
+      "answer": "A",
+      "explanation": "Token length is extended until character class changes or input ends.",
+      "source": "HW26–28 / Lab20–21"
+    },
+    {
+      "id": "M106",
+      "topic": "Grammars, Tokenizer & Recursive Descent",
+      "question": "The HW26 SEPARATORS constant contains…",
+      "choices": [
+        "only punctuation",
+        "space, tab, newline, carriage return",
+        "all letters",
+        "only spaces"
+      ],
+      "answer": "B",
+      "explanation": "HW26 defines separators as whitespace \" \\t\\n\\r\".",
+      "source": "HW26–28 / Lab20–21"
+    },
+    {
+      "id": "M107",
+      "topic": "Grammars, Tokenizer & Recursive Descent",
+      "question": "The token Queue is terminated by…",
+      "choices": [
+        "a null pointer",
+        "END_OF_INPUT token",
+        "a number 0",
+        "a closing curly brace"
+      ],
+      "answer": "B",
+      "explanation": "Tokenizer contract appends END_OF_INPUT.",
+      "source": "HW26–28 / Lab20–21"
+    },
+    {
+      "id": "M108",
+      "topic": "Grammars, Tokenizer & Recursive Descent",
+      "question": "In a recursive descent arithmetic parser, expr handles…",
+      "choices": [
+        "* / only",
+        "+ - between terms",
+        "single digits only",
+        "parentheses only"
+      ],
+      "answer": "B",
+      "explanation": "Grammar: expr→term{(+|-)term}.",
+      "source": "HW26–28 / Lab20–21"
+    },
+    {
+      "id": "M109",
+      "topic": "Grammars, Tokenizer & Recursive Descent",
+      "question": "In that parser, term handles…",
+      "choices": [
+        "* / between factors",
+        "+ - between expressions",
+        "whole Program",
+        "IF blocks"
+      ],
+      "answer": "A",
+      "explanation": "Grammar: term→factor{(*|/)factor}.",
+      "source": "HW26–28 / Lab20–21"
+    },
+    {
+      "id": "M110",
+      "topic": "Grammars, Tokenizer & Recursive Descent",
+      "question": "A factor is…",
+      "choices": [
+        "( expr ) or digit-seq",
+        "only digits of length 1",
+        "only + terms",
+        "only a separator"
+      ],
+      "answer": "A",
+      "explanation": "The factor production handles nested parentheses or integers.",
+      "source": "HW26–28 / Lab20–21"
+    },
+    {
+      "id": "M111",
+      "topic": "Grammars, Tokenizer & Recursive Descent",
+      "question": "Evaluate 2+3*4 with correct grammar precedence.",
+      "choices": [
+        "20",
+        "14",
+        "24",
+        "9"
+      ],
+      "answer": "B",
+      "explanation": "term computes 3*4=12 before expr adds 2.",
+      "source": "HW26–28 / Lab20–21"
+    },
+    {
+      "id": "M112",
+      "topic": "Grammars, Tokenizer & Recursive Descent",
+      "question": "The signed-real-const grammar allows sign as…",
+      "choices": [
+        "mandatory minus only",
+        "optional + or - at the start",
+        "only E sign",
+        "invalid always"
+      ],
+      "answer": "B",
+      "explanation": "signed-real-const→real-const | +real-const | -real-const.",
+      "source": "HW26–28 / Lab20–21"
+    },
+    {
+      "id": "M113",
+      "topic": "Grammars, Tokenizer & Recursive Descent",
+      "question": "Why does HW28 use a sentinel after the input expression?",
+      "choices": [
+        "to mark end so charAt(0) remains safe during parsing",
+        "to add an extra multiplication",
+        "to sort terms",
+        "to terminate Java strings"
+      ],
+      "answer": "A",
+      "explanation": "The source StringBuilder has at least one trailing marker after valid expression.",
+      "source": "HW26–28 / Lab20–21"
+    },
+    {
+      "id": "M114",
+      "topic": "Projects & Debugging Scenarios",
+      "question": "In Project 3 Map4, a negative hash code must be normalized because…",
+      "choices": [
+        "hashCode returns Strings",
+        "Java % can return a negative remainder and index outside the array",
+        "hash tables cannot contain keys",
+        "Map2 buckets are sorted"
+      ],
+      "answer": "B",
+      "explanation": "For negative a, a%b can be negative; mod guarantees 0≤index<capacity.",
+      "source": "P01–P07 / uploaded project code"
+    },
+    {
+      "id": "M115",
+      "topic": "Projects & Debugging Scenarios",
+      "question": "In P07 Statement2, addToBlock transfers a child’s…",
+      "choices": [
+        "data as a string copy",
+        "tree representation",
+        "hash value only",
+        "program name"
+      ],
+      "answer": "B",
+      "explanation": "The implementation adds localS.rep into the receiver’s child sequence, then clears localS.",
+      "source": "P01–P07 / uploaded project code"
+    },
+    {
+      "id": "M116",
+      "topic": "Projects & Debugging Scenarios",
+      "question": "In P07, assembleIfElse must put children into indices…",
+      "choices": [
+        "both at 0",
+        "then 0, else 1",
+        "else 0, then 1",
+        "no children"
+      ],
+      "answer": "B",
+      "explanation": "Then branch precedes else branch in child order.",
+      "source": "P01–P07 / uploaded project code"
+    },
+    {
+      "id": "M117",
+      "topic": "Projects & Debugging Scenarios",
+      "question": "Your NaturalNumber3 isZero implementation checks…",
+      "choices": [
+        "this.rep.length()==0",
+        "this.rep.equals(\"0\")",
+        "rep==null",
+        "a cached boolean"
+      ],
+      "answer": "A",
+      "explanation": "Zero’s representation is the empty string.",
+      "source": "P01–P07 / uploaded project code"
+    },
+    {
+      "id": "M118",
+      "topic": "Projects & Debugging Scenarios",
+      "question": "Your Map4 iterator moves to the next bucket when…",
+      "choices": [
+        "current bucket iterator has no next",
+        "every pair value is null",
+        "size grows",
+        "hashCode changes"
+      ],
+      "answer": "A",
+      "explanation": "It advances currentBucket until an iterator has entries.",
+      "source": "P01–P07 / uploaded project code"
+    },
+    {
+      "id": "M119",
+      "topic": "Projects & Debugging Scenarios",
+      "question": "If a JUnit test relies on an incorrect equals implementation to check add, what can happen?",
+      "choices": [
+        "a correct add is falsely reported incorrect",
+        "the compiler rejects all tests",
+        "add automatically sorts",
+        "all tests must pass"
+      ],
+      "answer": "A",
+      "explanation": "Dependent methods can make tests falsely fail; independent test observations help isolate faults.",
+      "source": "P01–P07 / uploaded project code"
+    },
+    {
+      "id": "M120",
+      "topic": "Exam-Style Tracing & Complexity",
+      "question": "With array-based min-heap [2,5,6,8,7], removing root uses which replacement before siftDown?",
+      "choices": [
+        "5",
+        "6",
+        "7",
+        "8"
+      ],
+      "answer": "C",
+      "explanation": "Move last active array entry 7 to root before sifting it down.",
+      "source": "Practice MT2 / full schedule"
+    },
+    {
+      "id": "M121",
+      "topic": "Exam-Style Tracing & Complexity",
+      "question": "A complete binary tree with n nodes uses an array without gaps in…",
+      "choices": [
+        "inorder order",
+        "level order",
+        "postorder order",
+        "alphabetic order"
+      ],
+      "answer": "B",
+      "explanation": "Breadth-first level order directly maps a complete tree into a compact array.",
+      "source": "Practice MT2 / full schedule"
+    },
+    {
+      "id": "M122",
+      "topic": "Exam-Style Tracing & Complexity",
+      "question": "A Queue in reverse doubly-linked representation has <5>; after enqueue(7), real-node order from preFront is…",
+      "choices": [
+        "5,7",
+        "7,5",
+        "7 only",
+        "5 only"
+      ],
+      "answer": "B",
+      "explanation": "Abstract queue <5,7> is stored physically 7 then 5.",
+      "source": "Practice MT2 / full schedule"
+    },
+    {
+      "id": "M123",
+      "topic": "Exam-Style Tracing & Complexity",
+      "question": "After s.addToBlock(0, call), the variable call normally contains…",
+      "choices": [
+        "the original call",
+        "an empty BLOCK",
+        "an empty CALL",
+        "null"
+      ],
+      "answer": "B",
+      "explanation": "Transfer clears source Statement.",
+      "source": "Practice MT2 / full schedule"
+    },
+    {
+      "id": "M124",
+      "topic": "Exam-Style Tracing & Complexity",
+      "question": "After adding 9,3,3 to SortingMachine in insertion mode its abstract contents are…",
+      "choices": [
+        "{3,9}",
+        "{3,3,9}",
+        "<3,3,9> only",
+        "{9}"
+      ],
+      "answer": "B",
+      "explanation": "Contents are a multiset and both 3 values remain.",
+      "source": "Practice MT2 / full schedule"
+    },
+    {
+      "id": "M125",
+      "topic": "Exam-Style Tracing & Complexity",
+      "question": "Which task must visit all nodes in an arbitrary BinaryTree in the worst case?",
+      "choices": [
+        "BST membership of guaranteed root",
+        "counting all CALL nodes",
+        "reading min-heap root",
+        "checking object identity"
+      ],
+      "answer": "B",
+      "explanation": "Counting all matching nodes requires exploring each subtree.",
+      "source": "Practice MT2 / full schedule"
+    }
+  ],
+  "short_response": [
+    {
+      "id": "S001",
+      "topic": "Contracts & Mathematical Models",
+      "question": "Explain the difference between @updates, @restores, @replaces, and @clears.",
+      "answer": "@updates allows a specified change; @restores requires the same abstract value on return; @replaces overwrites incoming value; @clears leaves the initial value.",
+      "source": "HW01–03 / Schedule",
+      "explanation": "The parameter mode is an obligation on the outgoing abstract value, not a Java visibility modifier. Compare what is allowed to change with what must be restored."
+    },
+    {
+      "id": "S002",
+      "topic": "Contracts & Mathematical Models",
+      "question": "Interpret this contract: @requires |q| > 0, @ensures q = tail(#q) and <result> is prefix of #q.",
+      "answer": "The queue must be nonempty; the method removes the first entry and returns that entry. It leaves all remaining elements in order.",
+      "source": "HW01–03 / Schedule",
+      "explanation": "Read the precondition first; it rules out an empty queue. Then read the postcondition as an operation on the incoming sequence, not the outgoing one."
+    },
+    {
+      "id": "S003",
+      "topic": "Contracts & Mathematical Models",
+      "question": "How does a mathematical postcondition differ from Java integer arithmetic?",
+      "answer": "A math postcondition uses exact mathematical integers, with no Java overflow. Java int arithmetic wraps on overflow and divides by truncating toward zero.",
+      "source": "HW01–03 / Schedule",
+      "explanation": "Specifications use the mathematical model, so an implementation must account for finite int ranges when calculations can overflow."
+    },
+    {
+      "id": "S004",
+      "topic": "Sequences, Smooth & Arithmetic",
+      "question": "Compute smooth(<-5, 2, 7, 8>) with Java integer division.",
+      "answer": "<-1, 4, 7>: (-5+2)/2=-1; (2+7)/2=4; (7+8)/2=7.",
+      "source": "HW01–04 / Lab02–03",
+      "explanation": "Form one average per adjacent pair. Java integer division truncates toward zero, including when the numerator is negative."
+    },
+    {
+      "id": "S005",
+      "topic": "Sequences, Smooth & Arithmetic",
+      "question": "Design five tests for average(int,int) and explain what each covers.",
+      "answer": "(MAX,MAX) overflow; (MIN,MIN) overflow; (MAX,MIN) mixed signs; (-5,-8) negative rounding; (3,4) odd positive sum.",
+      "source": "HW01–04 / Lab02–03",
+      "explanation": "An effective test partition covers limits of the domain and rounding differences, not just ordinary positive inputs."
+    },
+    {
+      "id": "S006",
+      "topic": "Sequences, Smooth & Arithmetic",
+      "question": "Explain how to write recursive versus iterative smooth while preserving the original input.",
+      "answer": "Iterative: loop adjacent indices and append each average. Recursive: base case length <=1, average first two then recursively smooth suffix; restore any removed entries before return.",
+      "source": "HW01–04 / Lab02–03",
+      "explanation": "The difficult part is preserving the input and producing exactly n−1 entries. Recursion should reduce the remaining input on each call."
+    },
+    {
+      "id": "S007",
+      "topic": "Kernel Implementations & Testing",
+      "question": "Design Queue kernel methods using a Sequence field in logical order.",
+      "answer": "enqueue appends at sequence.length(); dequeue removes index 0; length returns sequence.length(). Keep correspondence as abstract Queue equals sequence contents.",
+      "source": "HW05–09 / P01–02",
+      "explanation": "Connect the public Queue model to the private Sequence representation: the front corresponds to the element at index zero."
+    },
+    {
+      "id": "S008",
+      "topic": "Kernel Implementations & Testing",
+      "question": "What should a test plan cover for a Map kernel?",
+      "answer": "Constructor/empty map, add unique key, remove present key, removeAny nonempty, value present key, hasKey both outcomes, size transitions, and same/different hash-bucket cases.",
+      "source": "HW05–09 / P01–02",
+      "explanation": "Kernel tests should test both return values and the outgoing component state, including after removal and collision scenarios."
+    },
+    {
+      "id": "S009",
+      "topic": "Kernel Implementations & Testing",
+      "question": "Define kernel purity and explain why it matters in implementation classes.",
+      "answer": "Kernel methods should be implemented directly from representation and permitted primitives rather than relying on secondary methods of the same component; this avoids circular dependencies.",
+      "source": "HW05–09 / P01–02",
+      "explanation": "If a secondary method is implemented using kernels, a kernel implemented using that secondary method could introduce a cycle."
+    },
+    {
+      "id": "S010",
+      "topic": "Stacks, Queues & Layering",
+      "question": "Describe an O(1) push on a singly linked stack.",
+      "answer": "Create a node with x, set its next to the current top, update top to new node, and increment length.",
+      "source": "HW06–08 / HW18",
+      "explanation": "Only the head reference needs to change; unlike an array there is no shifting of existing entries."
+    },
+    {
+      "id": "S011",
+      "topic": "Stacks, Queues & Layering",
+      "question": "Explain how a queue-based Set might perform add and remove.",
+      "answer": "add checks membership then enqueues if absent; remove rotates/searches for the element and retains all other entries. Correctness of no duplicates is required.",
+      "source": "HW06–08 / HW18",
+      "explanation": "A Set cannot have duplicates even if its Queue representation can. Check membership on insert and preserve the remaining members during removal."
+    },
+    {
+      "id": "S012",
+      "topic": "Stacks, Queues & Layering",
+      "question": "Explain why a queue front method can be layered using only queue operations.",
+      "answer": "Dequeue saves front, re-enqueue it, and rotate remaining entries as needed so the original sequence is restored; return the saved front.",
+      "source": "HW06–08 / HW18",
+      "explanation": "Restoring the abstract sequence is necessary because front is an observer; rotating through the complete queue can reconstruct its old order."
+    },
+    {
+      "id": "S013",
+      "topic": "P01 WordCounter",
+      "question": "Trace case-insensitive counts for “Cat cat DOG dog!” using whitespace and punctuation separators.",
+      "answer": "{cat:2, dog:2}. Distinct punctuation groups are discarded; lowercase normalizes capitalization.",
+      "source": "P01 / WordCounter.zip",
+      "explanation": "Tokenization determines where words end; normalization determines whether differently capitalized forms are treated as the same key."
+    },
+    {
+      "id": "S014",
+      "topic": "P01 WordCounter",
+      "question": "Explain WordCounter’s major pipeline from text file to output.",
+      "answer": "Read input lines, split words/separators, normalize words, count with Map, collect/sort keys in Queue, emit escaped HTML table rows using sorted words.",
+      "source": "P01 / WordCounter.zip",
+      "explanation": "This is a multi-stage transformation: tokenize → normalize → count → order keys → render safely. Sorting the keys avoids relying on Map iteration order."
+    },
+    {
+      "id": "S015",
+      "topic": "P02 NaturalNumber on String",
+      "question": "After rep=\"408\", what do divideBy10 and then multiplyBy10(7) do?",
+      "answer": "divideBy10 returns 8 and leaves \"40\"; multiplyBy10(7) makes \"407\".",
+      "source": "P02 / NaturalNumberOnString.zip",
+      "explanation": "divideBy10 removes and returns the rightmost decimal digit. multiplyBy10 appends its digit to the retained prefix for a nonzero number."
+    },
+    {
+      "id": "S016",
+      "topic": "P02 NaturalNumber on String",
+      "question": "Give the core invariant for NaturalNumber-on-String.",
+      "answer": "Representation is a string of digits with no leading zero; zero has the canonical empty-string representation.",
+      "source": "P02 / NaturalNumberOnString.zip",
+      "explanation": "Canonical representation ensures a unique encoding of zero and excludes redundant leading zeros, simplifying arithmetic and comparisons."
+    },
+    {
+      "id": "S017",
+      "topic": "Hashing & Map4",
+      "question": "Explain the Map4 convention for hashTable and size.",
+      "answer": "Array length positive, every bucket nonnull, each key resides in bucket mod(key.hashCode,capacity), size equals sum of bucket sizes.",
+      "source": "HW09–11 / P03 / Map4.java",
+      "explanation": "The convention ties every key to a bucket and the global size to the sum of all bucket sizes. Each kernel method must preserve both facts."
+    },
+    {
+      "id": "S018",
+      "topic": "Hashing & Map4",
+      "question": "How do Map4 add, remove, hasKey, and value use hashing?",
+      "answer": "Compute nonnegative index from key hash then delegate to that bucket; add/remove also update global size as specified.",
+      "source": "HW09–11 / P03 / Map4.java",
+      "explanation": "The chosen bucket is determined by the key hash and mathematical modulo. Only the size-changing operations must adjust the global count."
+    },
+    {
+      "id": "S019",
+      "topic": "Hashing & Map4",
+      "question": "Why can a faulty hasKey make an add test appear to fail?",
+      "answer": "add asserts key absence via hasKey. A defect there can trigger an assertion before the add body runs.",
+      "source": "HW09–11 / P03 / Map4.java",
+      "explanation": "An assertion can invoke other methods. Debug the failed predicate as well as the method containing the assertion."
+    },
+    {
+      "id": "S020",
+      "topic": "Hashing & Map4",
+      "question": "Describe a robust hashCode design for a formatted phone number.",
+      "answer": "Combine digits in a deterministic way that gives equal numbers identical hashes, consider overflow, and keep it consistent with equals; never assume hash values uniquely identify objects.",
+      "source": "HW09–11 / P03 / Map4.java",
+      "explanation": "The crucial law is: a.equals(b) implies a.hashCode() == b.hashCode(). Collisions are allowed; unequal objects need not have different hashes."
+    },
+    {
+      "id": "S021",
+      "topic": "Trees & Recursive Traversal",
+      "question": "Show the generic recursive pattern for computing Tree size without its size kernel method.",
+      "answer": "If empty return 0; disassemble into root and child sequence, answer=1+sum(size(child)), reassemble root and children, return answer.",
+      "source": "HW12–13 / HW21",
+      "explanation": "Disassemble, solve each smaller tree, sum their contributions with 1 for the root, and reassemble before returning."
+    },
+    {
+      "id": "S022",
+      "topic": "Trees & Recursive Traversal",
+      "question": "Explain the difference between height, size and number of leaves.",
+      "answer": "Size counts all nodes. Height counts nodes on the longest root-to-leaf path (empty 0 in HW21). Leaves count nodes with zero children.",
+      "source": "HW12–13 / HW21",
+      "explanation": "Each quantity asks a different question: how many nodes, longest root-to-leaf path, or how many nodes have no children."
+    },
+    {
+      "id": "S023",
+      "topic": "Trees & Recursive Traversal",
+      "question": "Compute prefix representation of root a with left child b and empty right.",
+      "answer": "a(b(()())())",
+      "source": "HW12–13 / HW21",
+      "explanation": "The prefix format emits a representation for both children even when one child is empty. Here the right subtree contributes ()."
+    },
+    {
+      "id": "S024",
+      "topic": "Binary Search Trees & P04",
+      "question": "Describe BST removal for nodes with zero, one, and two children.",
+      "answer": "Zero: remove leaf. One: replace node with its only child. Two: replace label with inorder successor from right subtree (or predecessor variant if specified) and remove successor from old location.",
+      "source": "HW14 / P04",
+      "explanation": "For two children, use the chosen successor/predecessor strategy and then repair the old location; for a single child, the child can take the node’s place."
+    },
+    {
+      "id": "S025",
+      "topic": "Binary Search Trees & P04",
+      "question": "Contrast the practice exam’s ≤ duplicate rule with HW14’s unique-key BST invariant.",
+      "answer": "The practice exam allows duplicate labels and sends equality left; HW14 defines IS_BST with no duplicate labels. Apply each problem’s exact contract.",
+      "source": "HW14 / P04",
+      "explanation": "The duplicate-handling rule is part of the problem statement. A no-duplicate homework specification must not be silently replaced by the practice exam’s rule."
+    },
+    {
+      "id": "S026",
+      "topic": "Binary Search Trees & P04",
+      "question": "Why is the balanced average BST complexity O(log n) but worst-case O(n)?",
+      "answer": "Balanced tree height grows logarithmically; arbitrary insertion order may create a chain of height n.",
+      "source": "HW14 / P04",
+      "explanation": "Each comparison eliminates a subtree but the depth depends on the tree shape. A chain removes any logarithmic height advantage."
+    },
+    {
+      "id": "S027",
+      "topic": "Sorting & Comparators",
+      "question": "Trace insertion sort for <4,1,3,2>.",
+      "answer": "Sorted temporary queue grows: <4>, <1,4>, <1,3,4>, <1,2,3,4>. Original input is consumed then replaced.",
+      "source": "HW15–16 / Lab11–12",
+      "explanation": "Insertion sort maintains a sorted prefix/temporary queue after every step. Check the invariant after each insertion."
+    },
+    {
+      "id": "S028",
+      "topic": "Sorting & Comparators",
+      "question": "Partition <6,3,8,6,1> around 6 using <= in front.",
+      "answer": "front=<6,3,6,1>, back=<8>, if processing queue left-to-right and preserving order.",
+      "source": "HW15–16 / Lab11–12",
+      "explanation": "The comparator determines the partition. Equality belongs in front and the stable scan preserves the relative order within each side."
+    },
+    {
+      "id": "S029",
+      "topic": "Sorting & Comparators",
+      "question": "Explain the quicksort base case and how partitions are recombined.",
+      "answer": "If queue length ≤1, return. Otherwise dequeue pivot, partition remainder into ≤ and > queues, recursively sort each, then concatenate front, pivot, back.",
+      "source": "HW15–16 / Lab11–12",
+      "explanation": "Removing a pivot before partitioning guarantees that the recursive subqueues are smaller, even if the original data contains many duplicates."
+    },
+    {
+      "id": "S030",
+      "topic": "Heaps, Heapsort & P05",
+      "question": "Give a valid min-heap for 4,6,9,11,8 and its array.",
+      "answer": "One example tree root 4; children 6 and 9; 6 children 11 and 8. Array [4,6,9,11,8].",
+      "source": "HW17 / P05 / Practice MT2",
+      "explanation": "Check both rules independently: parents must be no larger than children, and the final level must have no gaps from left to right."
+    },
+    {
+      "id": "S031",
+      "topic": "Heaps, Heapsort & P05",
+      "question": "Describe removeFirst in an array min-heap.",
+      "answer": "Save root, move last active element to index 0, decrement heapSize, recursively/iteratively sift down by smaller child, return saved minimum.",
+      "source": "HW17 / P05 / Practice MT2",
+      "explanation": "Only the root can become disordered after moving the last element there. Restoring order by sifting down costs O(log n) for a complete heap."
+    },
+    {
+      "id": "S032",
+      "topic": "Heaps, Heapsort & P05",
+      "question": "Distinguish heap ordering property from heap shape property.",
+      "answer": "Ordering: every node≤its children. Shape: complete binary tree. HW17 explicitly asks to check ordering independent of shape.",
+      "source": "HW17 / P05 / Practice MT2",
+      "explanation": "A tree may satisfy the parent-child order relationship without being complete. Heap validity requires both order and shape."
+    },
+    {
+      "id": "S033",
+      "topic": "Heaps, Heapsort & P05",
+      "question": "What happens to entries after SortingMachine5 switches from insertion to extraction?",
+      "answer": "Queue entries are moved to an array-based heap and emptied; heapSize tracks the active prefix; insertionMode becomes false.",
+      "source": "HW17 / P05 / Practice MT2",
+      "explanation": "Mode change changes the representation, not the multiset. The entries Queue becomes empty and only the active heap prefix represents the remaining values."
+    },
+    {
+      "id": "S034",
+      "topic": "Linked Lists, Iterators & P06",
+      "question": "For a reversed doubly-linked Queue, describe enqueue(x) pointer assignments.",
+      "answer": "Insert immediately after preFront: new.prev=preFront; new.next=oldFirst; preFront.next=new; oldFirst.prev=new; length++.",
+      "source": "HW18–19 / P06 / Practice MT2",
+      "explanation": "Because the physical list reverses the Queue model, the abstract rear is adjacent to preFront. Update all four affected links."
+    },
+    {
+      "id": "S035",
+      "topic": "Linked Lists, Iterators & P06",
+      "question": "For a reversed doubly-linked Queue, describe dequeue pointer assignments.",
+      "answer": "Save postRear.prev node and its data; link its prev to postRear in both directions; length--; return saved data.",
+      "source": "HW18–19 / P06 / Practice MT2",
+      "explanation": "Because the abstract front is next to postRear, remove postRear.prev and reconnect its predecessor directly to the sentinel."
+    },
+    {
+      "id": "S036",
+      "topic": "Linked Lists, Iterators & P06",
+      "question": "Show List retreat transforming (<1,2>,<3,4>).",
+      "answer": "(<1>,<2,3,4>): move the last element of left to the front of right without changing concatenation.",
+      "source": "HW18–19 / P06 / Practice MT2",
+      "explanation": "The cursor moves left by one position, but the concatenation of the two halves must remain identical."
+    },
+    {
+      "id": "S037",
+      "topic": "BugsWorld & BL Programs",
+      "question": "Sketch a BL loop that infects an enemy ahead, otherwise moves if empty.",
+      "answer": "WHILE true DO\n IF next-is-enemy THEN infect ELSE IF next-is-empty THEN move END IF END IF\nEND WHILE (with valid nesting/formatting).",
+      "source": "HW20 / P07",
+      "explanation": "Nested IF controls distinguish enemy, empty space, and blocked space. Each BL construct needs a matching closing keyword."
+    },
+    {
+      "id": "S038",
+      "topic": "BugsWorld & BL Programs",
+      "question": "Distinguish BL compiler, server, client, and display.",
+      "answer": "Compiler translates BL; server hosts simulation; client executes compiled bug behavior; display renders the simulation.",
+      "source": "HW20 / P07",
+      "explanation": "Compilation checks syntax and produces object code; the runtime applications coordinate and visualize the simulated bugs."
+    },
+    {
+      "id": "S039",
+      "topic": "Statement ASTs & Recursion",
+      "question": "Trace Statement transfer in assembleIfElse(c,thenBlock,elseBlock).",
+      "answer": "Receiver becomes IF_ELSE with two BLOCK children. Source variables thenBlock and elseBlock are cleared to empty BLOCK. No deep copies are made.",
+      "source": "HW22–24 / P07 / Practice MT2",
+      "explanation": "The source blocks are transferred into the IF_ELSE receiver, so the caller’s original variables become initial empty blocks."
+    },
+    {
+      "id": "S040",
+      "topic": "Statement ASTs & Recursion",
+      "question": "Write the recursive case analysis for countSkips.",
+      "answer": "BLOCK iterate children; IF and WHILE recurse into body; IF_ELSE recurse both branches; CALL check name.equals(\"skip\"); restore any dissected object.",
+      "source": "HW22–24 / P07 / Practice MT2",
+      "explanation": "Case analysis follows the Statement kind. Recursion visits each subtree exactly once, while every disassembled component must be rebuilt."
+    },
+    {
+      "id": "S041",
+      "topic": "Statement ASTs & Recursion",
+      "question": "What nodes appear in an AST for WHILE true DO move END WHILE?",
+      "answer": "WHILE(TRUE) → BLOCK → CALL(move).",
+      "source": "HW22–24 / P07 / Practice MT2",
+      "explanation": "The WHILE is a single statement whose child is a BLOCK; the primitive action appears as a CALL child of that block."
+    },
+    {
+      "id": "S042",
+      "topic": "Statement ASTs & Recursion",
+      "question": "What does a BLOCK statement represent?",
+      "answer": "An ordered sequence of zero or more (non-BLOCK) statements, modeled as child subtrees.",
+      "source": "HW22–24 / P07 / Practice MT2",
+      "explanation": "A BLOCK’s ordered children are its body. It is not a primitive action and can be empty without violating the model."
+    },
+    {
+      "id": "S043",
+      "topic": "Program Kernels & Refactoring",
+      "question": "How do you restore a Program after recursively analyzing its context and body?",
+      "answer": "swapContext out, iterate statements, swapContext back; swapBody out, recursively analyze, swapBody back.",
+      "source": "HW23,25 / P07 / Program2.java",
+      "explanation": "swapContext and swapBody temporarily transfer ownership. Swapping the same objects back maintains the Program’s abstract value."
+    },
+    {
+      "id": "S044",
+      "topic": "Program Kernels & Refactoring",
+      "question": "Describe a correct Program-wide rename in terms of the context Map.",
+      "answer": "Remove oldName definition if present, rename all calls in every definition and body, then add that definition under newName, preserving unrelated entries and satisfying identifier/precondition restrictions.",
+      "source": "HW23,25 / P07 / Program2.java",
+      "explanation": "Renaming a definition requires changing both its map key and its call sites; changing only the calls or only the definition is incomplete."
+    },
+    {
+      "id": "S045",
+      "topic": "Program Kernels & Refactoring",
+      "question": "Explain newContext/newBody versus swapContext/swapBody.",
+      "answer": "newContext/newBody create empty objects of correct types; swap operations exchange program fields with supplied objects to allow manipulation and later restoration.",
+      "source": "HW23,25 / P07 / Program2.java",
+      "explanation": "new* allocates a correctly typed empty receiver; swap* is what actually moves the old Program data into that receiver."
+    },
+    {
+      "id": "S046",
+      "topic": "Grammars, Tokenizer & Recursive Descent",
+      "question": "List nonterminals and terminals for message→mascot actionlist; mascot→Brutus|Buckeyes; actionlist→action|action actionlist; action→runs|cheers.",
+      "answer": "Nonterminals: message, mascot, actionlist, action. Terminals: Brutus, Buckeyes, runs, cheers.",
+      "source": "HW26–28 / Lab20–21",
+      "explanation": "Identify symbols on the left of production arrows as nonterminals; literal alternatives at the leaves are terminals."
+    },
+    {
+      "id": "S047",
+      "topic": "Grammars, Tokenizer & Recursive Descent",
+      "question": "Derive Brutus cheers runs using the grammar above.",
+      "answer": "message→mascot actionlist→Brutus action actionlist→Brutus cheers actionlist→Brutus cheers action→Brutus cheers runs.",
+      "source": "HW26–28 / Lab20–21",
+      "explanation": "Use the recursive actionlist production to obtain two actions, then expand each to its chosen terminal."
+    },
+    {
+      "id": "S048",
+      "topic": "Grammars, Tokenizer & Recursive Descent",
+      "question": "Describe the algorithm for nextWordOrSeparator(text, position).",
+      "answer": "Classify text.charAt(position) as separator/nonseparator, increment end while characters have the same class, return substring(position,end).",
+      "source": "HW26–28 / Lab20–21",
+      "explanation": "A maximal run stops immediately before the first character in the opposite category. The initial character chooses the category."
+    },
+    {
+      "id": "S049",
+      "topic": "Grammars, Tokenizer & Recursive Descent",
+      "question": "Explain why recursive descent gives * higher precedence than +.",
+      "answer": "valueOfExpr invokes valueOfTerm for complete multiplicative chunks; terms are evaluated before the expr level combines them by + or -.",
+      "source": "HW26–28 / Lab20–21",
+      "explanation": "The parser structure encodes precedence: a term finishes all multiplication and division before expression-level addition and subtraction."
+    },
+    {
+      "id": "S050",
+      "topic": "Grammars, Tokenizer & Recursive Descent",
+      "question": "Evaluate (8-3)*2+5 using expr/term/factor grammar.",
+      "answer": "15: parenthesized factor 8-3=5, multiplied by 2 gives 10, then +5 gives 15.",
+      "source": "HW26–28 / Lab20–21",
+      "explanation": "Parentheses invoke expression parsing recursively; multiplication happens at term level before the final addition."
+    },
+    {
+      "id": "S051",
+      "topic": "Grammars, Tokenizer & Recursive Descent",
+      "question": "What causes a tokenizer to ignore whitespace but keep words?",
+      "answer": "Whenever the maximal token starts with a separator, skip it; otherwise enqueue it. Append END_OF_INPUT after all lines.",
+      "source": "HW26–28 / Lab20–21",
+      "explanation": "A tokenizer must not lose words or accidentally enqueue whitespace. The sentinel is added once at the end."
+    },
+    {
+      "id": "S052",
+      "topic": "Projects & Debugging Scenarios",
+      "question": "Compare the representation fields in P02, P03, and P07.",
+      "answer": "P02 NaturalNumber3: String rep. P03 Map4: array of Map buckets plus size. P07 Program2: name String, Map context, Statement body; Statement2: Tree<StatementLabel> rep.",
+      "source": "P01–P07 / uploaded project code",
+      "explanation": "These projects illustrate three different representations: canonical text, bucketed hash table, and AST/context components. Keep conventions specific to each."
+    },
+    {
+      "id": "S053",
+      "topic": "Projects & Debugging Scenarios",
+      "question": "What three categories of tests are essential for P07 Statement2 assembly/disassembly?",
+      "answer": "Empty BLOCK and boundary child positions; nested IF/IF_ELSE/WHILE/CALL round trips; transfer/clearing behavior of source statements and restoration after disassembly.",
+      "source": "P01–P07 / uploaded project code",
+      "explanation": "Use round-trip tests to check both logical results and source clearing. Test empty, nested, and boundary cases."
+    },
+    {
+      "id": "S054",
+      "topic": "Projects & Debugging Scenarios",
+      "question": "Identify a potential defect in the uploaded HW14 BST isInTree solution and explain correction.",
+      "answer": "Its shown branch when root>key recurses right; BST search should recurse left when root>key and right when root<key. It also needs to reassemble after disassembly to restore the tree.",
+      "source": "P01–P07 / uploaded project code",
+      "explanation": "Compare the key against the root: smaller means left, larger means right. Disassembling without reassembling violates restoration."
+    },
+    {
+      "id": "S055",
+      "topic": "Exam-Style Tracing & Complexity",
+      "question": "Draw one valid complete min-heap containing 5,7,9,11 and give its level-order array.",
+      "answer": "Root 5, children 7 and 9, left child of 7 is 11. Array [5,7,9,11].",
+      "source": "Practice MT2 / full schedule",
+      "explanation": "The root is the minimum of a min-heap; left-to-right completion controls where the fourth item may be placed."
+    },
+    {
+      "id": "S056",
+      "topic": "Exam-Style Tracing & Complexity",
+      "question": "Explain why restoring a BinaryTree or Statement after a helper call matters on an exam.",
+      "answer": "The method’s @restores/ensures contract often requires the input abstract value unchanged; disassembly temporarily empties/transfers values, so reassembly is essential.",
+      "source": "Practice MT2 / full schedule",
+      "explanation": "In the OSU component model, disassemble/swap operations transfer values. Reassembly is required whenever the contract calls for restoration."
+    }
+  ]
+}
